@@ -33,7 +33,7 @@ abstract public class Piece {
 
     void setStartCoordinates() {
         y = 0;
-        x = 4 + xOffset;
+        x = gridWidth/2 + xOffset;
     }
 
     // Return true if rotation was succesful, otherwise false.

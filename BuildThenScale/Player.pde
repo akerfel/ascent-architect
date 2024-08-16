@@ -15,8 +15,8 @@ public class Player {
     public Player(int x, int y) {
         this.x = x;
         this.y = y;
-        w = 30;
-        h = 30;
+        w = playerLength;
+        h = playerLength;
         speed = 3;
         movingLeft = false;
         movingRight = false;

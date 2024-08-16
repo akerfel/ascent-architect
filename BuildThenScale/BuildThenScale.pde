@@ -10,8 +10,7 @@ int gridWidth;
 int gridHeight;
 color backgroundColor;
 color gridBackgroundColor;
-int playerWidth;
-int playerHeight;
+int playerLength;
 
 // Dynamic BUILDING variables
 int lastTimeCheck;
@@ -37,6 +36,7 @@ void setup() {
     gridHeight = 32;
     backgroundColor = color(0);
     gridBackgroundColor = color(135, 206, 235);
+    playerLength = 30;
 
     fullScreen();
 
@@ -51,7 +51,7 @@ void setup() {
     gameState = GameState.BUILDING;
     
     // Dynamic CLIMBING variables
-    player = new Player(50, height * 1/2);
+    player = new Player(grid.blockLength * 2, (gridHeight - 2) * grid.blockLength + 2);
 }
 
 // This function is called ~60 times per second.
