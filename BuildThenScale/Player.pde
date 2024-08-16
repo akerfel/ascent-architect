@@ -9,7 +9,8 @@ public class Player {
     boolean movingRight;
     float gravity;
     float jumpSpeed;
-    boolean hasPrintedOnce = false;
+    int maxJumpSlots = 1;
+    int jumpSlots = maxJumpSlots;
     
     public Player(int x, int y) {
         this.x = x;
@@ -52,9 +53,11 @@ public class Player {
         if (wallPlayerIsInsideOf != null) {
             if (vy > 0) {
                 y = wallPlayerIsInsideOf.y - h; // player stands on block
+                jumpSlots = maxJumpSlots;
             }
             else if (vy < 0) {
                 y = wallPlayerIsInsideOf.y + wallPlayerIsInsideOf.h; // player is just below block
+                jumpSlots = maxJumpSlots;
             }
             vy = 0;
         }     
@@ -91,8 +94,9 @@ public class Player {
     }
     
     void jump() {
-        if (isOnGround()) {
+        if (jumpSlots > 0) { 
             vy = -jumpSpeed;  
+            jumpSlots--;
         }  
     }
 }
