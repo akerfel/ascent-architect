@@ -10,8 +10,10 @@ int gridWidth;
 int gridHeight;
 color backgroundColor;
 color gridBackgroundColor;
+int playerWidth;
+int playerHeight;
 
-// Dynamic variables
+// Dynamic BUILDING variables
 int lastTimeCheck;
 Grid grid;
 Piece currentPiece;
@@ -19,6 +21,11 @@ Piece heldPiece;
 boolean canHoldPiece;
 boolean gameOver;
 GameState gameState;
+
+// Dynamic CLIMBING variables
+Player player;
+ArrayList<Wall> walls;
+
 
 // This function is called once, at startup.
 void setup() {
@@ -31,9 +38,12 @@ void setup() {
     gridHeight = 40;
     backgroundColor = color(0);
     gridBackgroundColor = color(200);
+    playerWidth = 10;
+    playerHeight = 20;
 
-    // Dynamic variables
     size(800, 800);
+
+    // Dynamic CLIMBING variables
     lastTimeCheck = millis();
     grid = new Grid();
     currentPiece = createRandomPiece();
@@ -42,15 +52,18 @@ void setup() {
     canHoldPiece = true;
     gameOver = false;
     gameState = GameState.BUILDING;
+    
+    // Dynamic CLIMBING variables
+    player = new Player(50, height/4);
 }
 
 // This function is called ~60 times per second.
 void draw() {
     if (gameState == GameState.BUILDING) {
-        updateGameStateIfTimerReady();
+        updateBuildingGameStateIfTimerReady();
     }
     else if (gameState == GameState.CLIMBING) {
-        
+        updateClimbingGameState();
     }
     drawEverything();
 }

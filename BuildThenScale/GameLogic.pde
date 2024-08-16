@@ -1,4 +1,4 @@
-void updateGameStateIfTimerReady() {
+void updateBuildingGameStateIfTimerReady() {
     if (millis() > lastTimeCheck + timeIntervalFlag) {
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
@@ -20,7 +20,7 @@ boolean makePieceFallOrSpawnNewPiece() {
 void checkForLineClears() {
     for (int y = 0; y < gridHeight; y++) {
         if (lineIsFull(y)) {
-            performLineClear(y);
+            //performLineClear(y);
         }
     }
 }

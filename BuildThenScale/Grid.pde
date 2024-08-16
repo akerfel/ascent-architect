@@ -13,7 +13,8 @@ public class Grid {
     public void initializeBlocks() {
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
-                grid[x][y] = new Block(false);
+                boolean isFilled = (y == h - 1);
+                grid[x][y] = new Block(isFilled);
             }
         }
     }

@@ -41,5 +41,28 @@ void handleBuildingInput(int key) {
 }
 
 void handleClimbingInput(int key) {
-    
+    if (key == 'a') {
+        player.movingLeft = true;  
+    }
+    if (key == 'd') {
+        player.movingRight = true;  
+    }
+    if (key == ' ') {
+        player.jump(); 
+    }
+}
+
+void keyReleased() {
+    if (gameState == GameState.CLIMBING) {
+        handleKeyReleasedClimbing(key);    
+    }
+}
+
+void handleKeyReleasedClimbing(int key) {
+    if (key == 'a') {
+        player.movingLeft = false;  
+    }
+    if (key == 'd') {
+        player.movingRight = false;  
+    }    
 }

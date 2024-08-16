@@ -5,10 +5,10 @@ void drawEverything() {
     if (gameOver) {
         drawGameOver();
     }
+    drawPlayer();
 }
 
 void drawGrid() {
-    translate((width - grid.blockLength * grid.w)/2, (height - grid.blockLength * grid.h)/2);
     for (int x = 0; x < grid.w; x++) {
         for (int y = 0; y < grid.h; y++) {
             stroke(130, 130, 130);
@@ -21,7 +21,6 @@ void drawGrid() {
             }
         }
     }
-    translate(-(width - grid.blockLength * grid.w)/2, -(height - grid.blockLength * grid.h)/2);
 }
 
 void drawHeldPiece() {
@@ -43,4 +42,9 @@ void drawGameOver() {
     textAlign(CENTER, CENTER);
     fill(200, 0, 0);
     text("GAME OVER", width/2, height/2);
+}
+
+void drawPlayer() {
+    fill(255, 0, 0);
+    rect(player.x, player.y, player.w, player.h);    
 }
