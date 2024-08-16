@@ -14,13 +14,13 @@ public class Player {
     public Player(int x, int y) {
         this.x = x;
         this.y = y;
-        w = 40;
-        h = 40;
+        w = 15;
+        h = 15;
         speed = 3;
         movingLeft = false;
         movingRight = false;
         gravity = 0.3;
-        jumpSpeed = 10;
+        jumpSpeed = 3;
     }  
     void update() {
         xUpdate();
@@ -84,7 +84,15 @@ public class Player {
         return false;
     }
     
+    boolean isOnGround() {
+        int yCopy = y;
+        yUpdate();
+        return abs(y-yCopy) < 4;
+    }
+    
     void jump() {
-        vy = -jumpSpeed;    
+        if (isOnGround()) {
+            vy = -jumpSpeed;  
+        }  
     }
 }
