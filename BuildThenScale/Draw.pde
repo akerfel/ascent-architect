@@ -47,6 +47,6 @@ void drawGameOver() {
 }
 
 void drawPlayer() {
-    fill(255, 0, 0);
+    fill(251, 121, 56);
     rect(player.x, player.y, player.w, player.h);    
 }

@@ -4,6 +4,6 @@ public class Block {
 
     public Block(boolean isFilled) {
         this.isFilled = isFilled;
-        this.rgbColor = color(255);
+        this.rgbColor = color(19,133,16);
     }
 }
