@@ -15,13 +15,13 @@ public class Player {
     public Player(int x, int y) {
         this.x = x;
         this.y = y;
-        w = 15;
-        h = 15;
+        w = 30;
+        h = 30;
         speed = 3;
         movingLeft = false;
         movingRight = false;
         gravity = 0.3;
-        jumpSpeed = 3;
+        jumpSpeed = 6;
     }  
     void update() {
         xUpdate();

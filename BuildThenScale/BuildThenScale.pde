@@ -34,13 +34,11 @@ void setup() {
     // Settings
     timeIntervalFlag = 500;
     gridWidth = 60;
-    gridHeight = 40;
+    gridHeight = 32;
     backgroundColor = color(0);
-    gridBackgroundColor = color(200);
-    playerWidth = 10;
-    playerHeight = 20;
+    gridBackgroundColor = color(135, 206, 235);
 
-    size(800, 800);
+    fullScreen();
 
     // Dynamic CLIMBING variables
     lastTimeCheck = millis();

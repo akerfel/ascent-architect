@@ -6,7 +6,7 @@ public class Grid {
 
     public Grid() {
         grid = new Block[w][h];
-        blockLength = min(width/(2+w), height/(2+h));
+        blockLength = 32;
         initializeBlocks();
     }
 
