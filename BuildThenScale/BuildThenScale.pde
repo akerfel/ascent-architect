@@ -26,7 +26,6 @@ GameState gameState;
 Player player;
 ArrayList<Wall> walls;
 
-
 // This function is called once, at startup.
 void setup() {
     // Cheats
@@ -54,7 +53,7 @@ void setup() {
     gameState = GameState.BUILDING;
     
     // Dynamic CLIMBING variables
-    player = new Player(50, height/4);
+    player = new Player(50, height * 1/2);
 }
 
 // This function is called ~60 times per second.

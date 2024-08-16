@@ -41,6 +41,10 @@ void handleBuildingInput(int key) {
 }
 
 void handleClimbingInput(int key) {
+    if (key == ENTER) {
+          gameState = GameState.BUILDING;
+          return;
+    }
     if (key == 'a') {
         player.movingLeft = true;  
     }
