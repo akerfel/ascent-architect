@@ -18,6 +18,7 @@ Piece currentPiece;
 Piece heldPiece;
 boolean canHoldPiece;
 boolean gameOver;
+GameState gameState;
 
 // This function is called once, at startup.
 void setup() {
@@ -25,8 +26,8 @@ void setup() {
     onlySpawnLongPieces = false;
 
     // Settings
-    timeIntervalFlag = 3500;
-    gridWidth = 40;
+    timeIntervalFlag = 500;
+    gridWidth = 60;
     gridHeight = 40;
     backgroundColor = color(0);
     gridBackgroundColor = color(200);
@@ -40,12 +41,16 @@ void setup() {
     heldPiece = null;
     canHoldPiece = true;
     gameOver = false;
+    gameState = GameState.BUILDING;
 }
 
 // This function is called ~60 times per second.
 void draw() {
-    if (!gameOver) {
+    if (gameState == GameState.BUILDING) {
         updateGameStateIfTimerReady();
+    }
+    else if (gameState == GameState.CLIMBING) {
+        
     }
     drawEverything();
 }
