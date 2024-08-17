@@ -1,5 +1,6 @@
 // In this file, all global variables and declared and initialized,
-// and the draw() method is defined, which is called 60 times per second.
+// and the draw() method is defined, which is called ~60 times per second.
+// The setup() method is also called, which is called once, at startup.
 
 // Cheats
 boolean onlySpawnLongPieces;
@@ -19,6 +20,7 @@ color gridBackgroundColor;
 color goalColor;
 
 // Dynamic BUILDING variables
+int currentLevelNum;
 int lastTimeCheck;
 Grid grid;
 Piece currentPiece;
@@ -26,7 +28,6 @@ Piece heldPiece;
 boolean canHoldPiece;
 boolean gameOver;
 GameState gameState;
-int currentLevel;
 
 // Dynamic CLIMBING variables
 Player player;
@@ -34,7 +35,8 @@ ArrayList<Wall> walls;
 
 // This function is called once, at startup.
 void setup() {
-        size(1728, 972);
+    size(1728, 972);
+    
     // Cheats
     onlySpawnLongPieces = false;
 
@@ -45,7 +47,7 @@ void setup() {
     timeIntervalFlag = 500;
     playerLength = pixelsPerBlock;
     playerXstartPos = pixelsPerBlock * 2;
-    playerYstartPos = (gridHeight - 2) * pixelsPerBlock - pixelsPerBlock/8;
+    playerYstartPos = (gridHeight - 4) * pixelsPerBlock - pixelsPerBlock/8;
     
     // Colors
     backgroundColor = color(0);
@@ -53,15 +55,16 @@ void setup() {
     goalColor = color(203, 209, 25);
 
     // Dynamic BUILDING variables
-    lastTimeCheck = millis();
+    currentLevelNum = 0;
     grid = new Grid();
+    loadCurrentLevel();
+    lastTimeCheck = millis();
     currentPiece = createRandomPiece();
     currentPiece.fillBlocks();
     heldPiece = null;
-    canHoldPiece = true;
+    canHoldPiece = false;
     gameOver = false;
     gameState = GameState.BUILDING;
-    currentLevel = 1;
     
     // Dynamic CLIMBING variables
     player = new Player(0, 0);

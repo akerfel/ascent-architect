@@ -20,9 +20,15 @@ void updateWallsAccordingToGrid() {
 void goToNextLevel() {
     player.vy = 0;
     setPlayerToStartPos();
+    currentLevelNum++;
+    loadCurrentLevel();
 }
 
 void setPlayerToStartPos() {
     player.x = playerXstartPos;  
     player.y = playerYstartPos;     
+}
+
+void loadCurrentLevel() {
+    grid.transferLevelToGrid(levels[currentLevelNum]);
 }
