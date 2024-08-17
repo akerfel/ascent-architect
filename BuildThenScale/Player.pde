@@ -26,37 +26,63 @@ public class Player {
     
     void update() {
         if (gameState == GameState.CLIMBING) {
-            xUpdate();
-            yUpdate_and_checkIfWon();
+            if (isTouchingGoal()) {
+            }
+            if (xUpdate_and_checkIfWon()) {
+                goToNextLevel();
+                return;
+            }
+            if (yUpdate_and_checkIfWon()) {
+                goToNextLevel();
+                return;
+            }
         }
     }
     
-    // Maybe make handleHorizontalWallCollision similar to handleVerticalWallCollision.
-    void xUpdate() {
+    boolean isTouchingGoal() {
+        return false;
+    }
+    
+    boolean xUpdate_and_checkIfWon() {
         int xOld = x;
+        
+        // Change x
         if (movingLeft) {
             x -= speed;   
         }
         if (movingRight) {
             x += speed;
         } 
-        if (collidesWallNow()) {
-            x = xOld;
-        }
-    }
-    
-    void yUpdate_and_checkIfWon() {
-        y += vy;
-        vy += gravity;  
-        handleVerticalWallCollision_and_checkIfWon();
-    }
-    
-    void handleVerticalWallCollision_and_checkIfWon() {
+        
+        // Check if won
         Wall wallPlayerIsInsideOf = getWallPlayerIsInsideOf();
         if (wallPlayerIsInsideOf != null) {
             if (wallPlayerIsInsideOf.isGoal) {
-                goToNextLevel();
-                return;
+                return true;    
+            }
+        }
+        
+        // If didn't win and is inside wall, go back
+        if (collidesWallNow()) {
+            x = xOld;
+        }
+        return false;
+    }
+    
+    boolean yUpdate_and_checkIfWon() {
+        // Change y
+        y += vy;
+        vy += gravity;  
+        
+        return handleHorizontalWallCollision_and_checkIfWon();
+    }
+    
+    boolean handleHorizontalWallCollision_and_checkIfWon() {
+        Wall wallPlayerIsInsideOf = getWallPlayerIsInsideOf();
+        if (wallPlayerIsInsideOf != null) {
+            // Check if won. If not, just handle collisions normally.
+            if (wallPlayerIsInsideOf.isGoal) {
+                return true;    
             }
             if (vy > 0) {
                 y = wallPlayerIsInsideOf.y - h; // player stands on block
@@ -67,7 +93,8 @@ public class Player {
                 jumpSlots = maxJumpSlots;
             }
             vy = 0;
-        }     
+        }
+        return false;
     }
     
     Wall getWallPlayerIsInsideOf() {
