@@ -7,7 +7,7 @@ public class Wall {
      public Wall(int x, int y) {
         this.x = x;
         this.y = y;
-        w = grid.blockLength;
-        h = grid.blockLength;
+        w = pixelsPerBlock;
+        h = pixelsPerBlock;
     }
 }

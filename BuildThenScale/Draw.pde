@@ -16,10 +16,10 @@ void drawGrid() {
             noStroke();
             if (grid.grid[x][y].isFilled) {
                 fill(grid.grid[x][y].rgbColor);
-                rect(x * grid.blockLength, y * grid.blockLength, grid.blockLength, grid.blockLength);
+                rect(x * pixelsPerBlock, y * pixelsPerBlock, pixelsPerBlock, pixelsPerBlock);
             } else {
                 fill(gridBackgroundColor);
-                rect(x * grid.blockLength, y * grid.blockLength, grid.blockLength, grid.blockLength);
+                rect(x * pixelsPerBlock, y * pixelsPerBlock, pixelsPerBlock, pixelsPerBlock);
             }
         }
     }
@@ -33,7 +33,7 @@ void drawHeldPiece() {
         }
         for (int i = 0; i < heldPiece.blocks.length; i++) {
             fill(heldPiece.rgbColor);
-            rect(heldPiece.blocks[i].x * grid.blockLength, heldPiece.blocks[i].y * grid.blockLength, grid.blockLength, grid.blockLength);
+            rect(heldPiece.blocks[i].x * pixelsPerBlock, heldPiece.blocks[i].y * pixelsPerBlock, pixelsPerBlock, pixelsPerBlock);
         }
         //translate(-(width - grid.blockLength * (3 + heldPiece.xOffset)), -grid.blockLength * 2);
     }
@@ -48,5 +48,5 @@ void drawGameOver() {
 
 void drawPlayer() {
     fill(251, 121, 56);
-    rect(player.x, player.y, player.w, player.h);    
+    rect(player.x, player.y, player.w, player.h);
 }

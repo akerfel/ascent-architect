@@ -5,6 +5,7 @@
 boolean onlySpawnLongPieces;
 
 // Settings
+int pixelsPerBlock;
 int timeIntervalFlag;
 int gridWidth;
 int gridHeight;
@@ -27,18 +28,18 @@ ArrayList<Wall> walls;
 
 // This function is called once, at startup.
 void setup() {
+        size(1728, 972);
     // Cheats
     onlySpawnLongPieces = false;
 
     // Settings
+    gridWidth = 64;
+    gridHeight = 36;
+    pixelsPerBlock = width/gridWidth;
     timeIntervalFlag = 500;
-    gridWidth = 60;
-    gridHeight = 32;
     backgroundColor = color(0);
     gridBackgroundColor = color(135, 206, 235);
-    playerLength = 30;
-
-    fullScreen();
+    playerLength = pixelsPerBlock;
 
     // Dynamic CLIMBING variables
     lastTimeCheck = millis();
@@ -51,7 +52,7 @@ void setup() {
     gameState = GameState.BUILDING;
     
     // Dynamic CLIMBING variables
-    player = new Player(grid.blockLength * 2, (gridHeight - 2) * grid.blockLength + 2);
+    player = new Player(pixelsPerBlock * 2, (gridHeight - 2) * pixelsPerBlock - pixelsPerBlock/8);
 }
 
 // This function is called ~60 times per second.

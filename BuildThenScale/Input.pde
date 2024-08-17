@@ -1,17 +1,20 @@
 void keyPressed() {
+    if (key == ENTER) {
+        if (gameState == GameState.BUILDING) {
+            gameState = GameState.CLIMBING;    
+        }
+        else if (gameState == GameState.CLIMBING) {
+            gameState = GameState.BUILDING;    
+        }
+    }
+    
     if (gameState == GameState.BUILDING) {
         handleBuildingInput(key);
     }
-    else if (gameState == GameState.CLIMBING) {
-        handleClimbingInput(key);
-    }
+    handleClimbingInput(key);
 }
 
 void handleBuildingInput(int key) {
-    if (key == ENTER) {
-          gameState = GameState.CLIMBING;
-          return;
-    }
     if (keyCode == UP || key == 'w') {
         currentPiece.tryToRotate();
     }
@@ -39,14 +42,10 @@ void handleBuildingInput(int key) {
 }
 
 void handleClimbingInput(int key) {
-    if (key == ENTER) {
-          gameState = GameState.BUILDING;
-          return;
-    }
-    if (keyCode == LEFT || key == 'a') {
+    if (key == 'a') {
         player.movingLeft = true;  
     }
-    if (keyCode == RIGHT || key == 'd') {
+    if (key == 'd') {
         player.movingRight = true;  
     }
     if (key == ' ') {
@@ -55,9 +54,7 @@ void handleClimbingInput(int key) {
 }
 
 void keyReleased() {
-    if (gameState == GameState.CLIMBING) {
-        handleKeyReleasedClimbing(key);    
-    }
+    handleKeyReleasedClimbing(key);    
 }
 
 void handleKeyReleasedClimbing(int key) {

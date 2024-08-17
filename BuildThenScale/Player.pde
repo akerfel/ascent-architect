@@ -20,12 +20,14 @@ public class Player {
         speed = 3;
         movingLeft = false;
         movingRight = false;
-        gravity = 0.3;
-        jumpSpeed = 4;
+        gravity = pixelsPerBlock * 0.01;
+        jumpSpeed = pixelsPerBlock * 0.14;
     }  
     void update() {
-        xUpdate();
-        yUpdate();
+        if (gameState == GameState.CLIMBING) {
+            xUpdate();
+            yUpdate();
+        }
     }
     
     // Maybe make handleHorizontalWallCollision similar to handleVerticalWallCollision.

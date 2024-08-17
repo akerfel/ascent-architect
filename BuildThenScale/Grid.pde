@@ -2,11 +2,9 @@ public class Grid {
     Block[][] grid;
     int w = gridWidth; // width
     int h = gridHeight; // height
-    int blockLength; // side length of each block
 
     public Grid() {
         grid = new Block[w][h];
-        blockLength = 32;
         initializeBlocks();
     }
 
