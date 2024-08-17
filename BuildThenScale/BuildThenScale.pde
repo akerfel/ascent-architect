@@ -9,9 +9,12 @@ int pixelsPerBlock;
 int timeIntervalFlag;
 int gridWidth;
 int gridHeight;
+int playerLength;
+
+// Colors
 color backgroundColor;
 color gridBackgroundColor;
-int playerLength;
+color goalColor;
 
 // Dynamic BUILDING variables
 int lastTimeCheck;
@@ -38,9 +41,12 @@ void setup() {
     gridHeight = 36;
     pixelsPerBlock = width/gridWidth;
     timeIntervalFlag = 500;
+    playerLength = pixelsPerBlock;
+    
+    // Colors
     backgroundColor = color(0);
     gridBackgroundColor = color(135, 206, 235);
-    playerLength = pixelsPerBlock;
+    goalColor = color(203, 209, 25);
 
     // Dynamic BUILDING variables
     lastTimeCheck = millis();

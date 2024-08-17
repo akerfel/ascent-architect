@@ -23,6 +23,7 @@ public class Player {
         gravity = pixelsPerBlock * 0.01;
         jumpSpeed = pixelsPerBlock * 0.14;
     }  
+    
     void update() {
         if (gameState == GameState.CLIMBING) {
             xUpdate();

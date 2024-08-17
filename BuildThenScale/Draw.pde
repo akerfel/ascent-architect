@@ -14,15 +14,23 @@ void drawGrid() {
         for (int y = 0; y < grid.h; y++) {
             stroke(130, 130, 130);
             noStroke();
-            if (grid.grid[x][y].isFilled) {
-                fill(grid.grid[x][y].rgbColor);
-                rect(x * pixelsPerBlock, y * pixelsPerBlock, pixelsPerBlock, pixelsPerBlock);
-            } else {
-                fill(gridBackgroundColor);
-                rect(x * pixelsPerBlock, y * pixelsPerBlock, pixelsPerBlock, pixelsPerBlock);
-            }
+            drawBlock(grid.grid[x][y], x, y);
         }
     }
+}
+
+void drawBlock(Block block, int x, int y) {
+    if (block.isFilled) {
+        fill(block.rgbColor);
+    }
+    else if (block.isGoal) {
+        fill(block.rgbColor);
+    }
+    else {
+        fill(gridBackgroundColor);
+        rect(x * pixelsPerBlock, y * pixelsPerBlock, pixelsPerBlock, pixelsPerBlock);
+    }
+    rect(x * pixelsPerBlock, y * pixelsPerBlock, pixelsPerBlock, pixelsPerBlock);
 }
 
 void drawHeldPiece() {

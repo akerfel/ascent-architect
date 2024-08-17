@@ -27,10 +27,17 @@ public class Grid {
     public void transferLevelToGrid(char[][] level) {
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
-                // Note: [y][x] for level but [x][y] for grid. 
-                // I don't have time to fix that now :)
-                boolean isFilled = (level[y][x] == '#');
-                grid[x][y] = new Block(isFilled);
+                if (level[y][x] == '#') {
+                    grid[x][y] = new Block(true);
+                }
+                else if (level[y][x] == '.') {
+                    grid[x][y] = new Block(false);
+                }
+                else if (level[y][x] == 'G') {
+                    grid[x][y] = new Block(false);
+                    grid[x][y].setIsGoal(true);
+                    grid[x][y].setRgbColor(goalColor);
+                }
             }
         }
     }
