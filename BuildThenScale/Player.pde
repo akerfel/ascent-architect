@@ -27,7 +27,7 @@ public class Player {
     void update() {
         if (gameState == GameState.CLIMBING) {
             xUpdate();
-            yUpdate();
+            yUpdate_and_checkIfWon();
         }
     }
     
@@ -45,15 +45,19 @@ public class Player {
         }
     }
     
-    void yUpdate() {
+    void yUpdate_and_checkIfWon() {
         y += vy;
         vy += gravity;  
-        handleVerticalWallCollision();
+        handleVerticalWallCollision_and_checkIfWon();
     }
     
-    void handleVerticalWallCollision() {
+    void handleVerticalWallCollision_and_checkIfWon() {
         Wall wallPlayerIsInsideOf = getWallPlayerIsInsideOf();
         if (wallPlayerIsInsideOf != null) {
+            if (wallPlayerIsInsideOf.isGoal) {
+                goToNextLevel();
+                return;
+            }
             if (vy > 0) {
                 y = wallPlayerIsInsideOf.y - h; // player stands on block
                 jumpSlots = maxJumpSlots;
@@ -92,7 +96,7 @@ public class Player {
     
     boolean isOnGround() {
         int yCopy = y;
-        yUpdate();
+        yUpdate_and_checkIfWon();
         return abs(y-yCopy) < 4;
     }
     

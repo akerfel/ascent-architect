@@ -10,7 +10,7 @@ public class Grid {
 
     public void initializeBlocks() {
         
-        transferLevelToGrid(level1);
+        transferLevelToGrid(debugLevel);
         /*
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
@@ -34,7 +34,7 @@ public class Grid {
                     grid[x][y] = new Block(false);
                 }
                 else if (level[y][x] == 'G') {
-                    grid[x][y] = new Block(false);
+                    grid[x][y] = new Block(true);
                     grid[x][y].setIsGoal(true);
                     grid[x][y].setRgbColor(goalColor);
                 }
