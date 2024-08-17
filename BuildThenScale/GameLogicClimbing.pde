@@ -18,5 +18,11 @@ void updateWallsAccordingToGrid() {
 }
 
 void goToNextLevel() {
-    println("NEXT LEVEL!");    
+    player.vy = 0;
+    setPlayerToStartPos();
+}
+
+void setPlayerToStartPos() {
+    player.x = playerXstartPos;  
+    player.y = playerYstartPos;     
 }

@@ -10,6 +10,8 @@ int timeIntervalFlag;
 int gridWidth;
 int gridHeight;
 int playerLength;
+int playerXstartPos;
+int playerYstartPos;
 
 // Colors
 color backgroundColor;
@@ -42,6 +44,8 @@ void setup() {
     pixelsPerBlock = width/gridWidth;
     timeIntervalFlag = 500;
     playerLength = pixelsPerBlock;
+    playerXstartPos = pixelsPerBlock * 2;
+    playerYstartPos = (gridHeight - 2) * pixelsPerBlock - pixelsPerBlock/8;
     
     // Colors
     backgroundColor = color(0);
@@ -60,7 +64,8 @@ void setup() {
     currentLevel = 1;
     
     // Dynamic CLIMBING variables
-    player = new Player(pixelsPerBlock * 2, (gridHeight - 2) * pixelsPerBlock - pixelsPerBlock/8);
+    player = new Player(0, 0);
+    setPlayerToStartPos();
 }
 
 // This function is called ~60 times per second.
