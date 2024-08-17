@@ -10,10 +10,10 @@ public class Grid {
     public void transferLevelToGrid(char[][] level) {
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
-                if (level[y][x] == '#') {
+                if (level[y][x] == 'X') {
                     grid[x][y] = new Block(true);
                 }
-                else if (level[y][x] == '.') {
+                else if (level[y][x] == ' ') {
                     grid[x][y] = new Block(false);
                 }
                 else if (level[y][x] == 'G') {
