@@ -21,7 +21,7 @@ public class Player {
         movingLeft = false;
         movingRight = false;
         gravity = 0.3;
-        jumpSpeed = 6;
+        jumpSpeed = 4;
     }  
     void update() {
         xUpdate();

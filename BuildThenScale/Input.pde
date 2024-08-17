@@ -12,20 +12,18 @@ void handleBuildingInput(int key) {
           gameState = GameState.CLIMBING;
           return;
     }
-    if (key == CODED) {
-        if (keyCode == UP) {
-            currentPiece.tryToRotate();
-        }
-        if (keyCode == LEFT) {
-            currentPiece.tryToMoveLeft();
-        }
-        if (keyCode == RIGHT) {
-            currentPiece.tryToMoveRight();
-        }
-        if (keyCode == DOWN) {
-            makePieceFallOrSpawnNewPiece();
-            lastTimeCheck = millis();
-        }
+    if (keyCode == UP || key == 'w') {
+        currentPiece.tryToRotate();
+    }
+    if (keyCode == LEFT || key == 'a') {
+        currentPiece.tryToMoveLeft();
+    }
+    if (keyCode == RIGHT || key == 'd') {
+        currentPiece.tryToMoveRight();
+    }
+    if (keyCode == DOWN || key == 's') {
+        makePieceFallOrSpawnNewPiece();
+        lastTimeCheck = millis();
     }
 
     if (key == ' ') {
@@ -45,10 +43,10 @@ void handleClimbingInput(int key) {
           gameState = GameState.BUILDING;
           return;
     }
-    if (key == 'a') {
+    if (keyCode == LEFT || key == 'a') {
         player.movingLeft = true;  
     }
-    if (key == 'd') {
+    if (keyCode == RIGHT || key == 'd') {
         player.movingRight = true;  
     }
     if (key == ' ') {
