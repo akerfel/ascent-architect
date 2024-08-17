@@ -28,7 +28,7 @@ public class Grid {
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
                 // Note: [y][x] for level but [x][y] for grid. 
-                // Don't have time to fix that now :)
+                // I don't have time to fix that now :)
                 boolean isFilled = (level[y][x] == '#');
                 grid[x][y] = new Block(isFilled);
             }

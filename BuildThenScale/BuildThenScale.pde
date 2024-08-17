@@ -21,6 +21,7 @@ Piece heldPiece;
 boolean canHoldPiece;
 boolean gameOver;
 GameState gameState;
+int currentLevel;
 
 // Dynamic CLIMBING variables
 Player player;
@@ -41,7 +42,7 @@ void setup() {
     gridBackgroundColor = color(135, 206, 235);
     playerLength = pixelsPerBlock;
 
-    // Dynamic CLIMBING variables
+    // Dynamic BUILDING variables
     lastTimeCheck = millis();
     grid = new Grid();
     currentPiece = createRandomPiece();
@@ -50,6 +51,7 @@ void setup() {
     canHoldPiece = true;
     gameOver = false;
     gameState = GameState.BUILDING;
+    currentLevel = 1;
     
     // Dynamic CLIMBING variables
     player = new Player(pixelsPerBlock * 2, (gridHeight - 2) * pixelsPerBlock - pixelsPerBlock/8);
