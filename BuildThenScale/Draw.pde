@@ -1,5 +1,6 @@
 void drawEverything() {
     background(backgroundColor);
+    translate(0, - (player.y - height + pixelsPerBlock * 6));
     drawGrid();
     drawHeldPiece();
     if (gameOver) {

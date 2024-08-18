@@ -1,3 +1,27 @@
+char[][] level0 = {
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "X          X".toCharArray(),
+  "XXXXXXXXXXXX".toCharArray(),
+};
+
 char[][] level1 = {
 "X                                                              X".toCharArray(),
 "X                                                              X".toCharArray(),
@@ -33,50 +57,11 @@ char[][] level1 = {
 "X                                                              X".toCharArray(),
 "X                                                              X".toCharArray(),
 "X                                                              X".toCharArray(),
-"X       G                                                      X".toCharArray(),
+"X                                                              X".toCharArray(),
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX".toCharArray(),
 };
 
 char[][] level2 = {
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                           G  X".toCharArray(),
-"X                                                      XXXXXXXXX".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                 G                                            X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"X                                                              X".toCharArray(),
-"XXXXX   XXXXXXXXXXXXXXXXXXXXXXX   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX".toCharArray(),
-"XXXXXXX                         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX".toCharArray(),
-"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX".toCharArray(),
-};
-
-char[][] level3 = {
 "X                                                              X".toCharArray(),
 "X                                                              X".toCharArray(),
 "X                                                              X".toCharArray(),
@@ -116,8 +101,8 @@ char[][] level3 = {
 };
 
 char[][][] levels = {
+    level0,
     level1,
-    level2,
-    level3
+    level2
 };
         

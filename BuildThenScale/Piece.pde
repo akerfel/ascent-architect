@@ -32,7 +32,7 @@ abstract public class Piece {
     }
 
     void setStartCoordinates() {
-        y = 0;
+        y = player.getYinGrid() - 14;
         x = gridWidth/2 + xOffset;
     }
 

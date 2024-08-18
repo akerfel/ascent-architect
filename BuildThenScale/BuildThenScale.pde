@@ -35,17 +35,17 @@ ArrayList<Wall> walls;
 
 // This function is called once, at startup.
 void setup() {
-    size(1728, 972);
+    size(800, 800);
     
     // Cheats
     onlySpawnLongPieces = false;
 
     // Settings
-    gridWidth = 64;
-    gridHeight = 36;
-    pixelsPerBlock = width/gridWidth;
+    gridWidth = 14;
+    gridHeight = 80;
+    pixelsPerBlock = height/gridHeight * 4;
     timeIntervalFlag = 500;
-    playerLength = pixelsPerBlock;
+    playerLength = pixelsPerBlock * 2/3;
     playerXstartPos = pixelsPerBlock * 2;
     playerYstartPos = (gridHeight - 4) * pixelsPerBlock - pixelsPerBlock/8;
     
@@ -53,11 +53,16 @@ void setup() {
     backgroundColor = color(0);
     gridBackgroundColor = color(135, 206, 235);
     goalColor = color(203, 209, 25);
+    
+    // Dynamic CLIMBING variables
+    player = new Player(0, 0);
+    setPlayerToStartPos();
 
     // Dynamic BUILDING variables
     currentLevelNum = 0;
     grid = new Grid();
-    loadCurrentLevel();
+    //loadCurrentLevel();
+    grid.initializeBlocks();
     lastTimeCheck = millis();
     currentPiece = createRandomPiece();
     currentPiece.fillBlocks();
@@ -65,19 +70,15 @@ void setup() {
     canHoldPiece = false;
     gameOver = false;
     gameState = GameState.BUILDING;
-    
-    // Dynamic CLIMBING variables
-    player = new Player(0, 0);
-    setPlayerToStartPos();
 }
 
 // This function is called ~60 times per second.
 void draw() {
-    if (gameState == GameState.BUILDING) {
+    //if (gameState == GameState.BUILDING) {
         updateBuildingGameStateIfTimerReady();
-    }
-    else if (gameState == GameState.CLIMBING) {
+    //}
+    //else if (gameState == GameState.CLIMBING) {
         updateClimbingGameState();
-    }
+    //}
     drawEverything();
 }

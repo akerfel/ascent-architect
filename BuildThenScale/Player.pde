@@ -25,7 +25,7 @@ public class Player {
     }  
     
     void update() {
-        if (gameState == GameState.CLIMBING) {
+        //if (gameState == GameState.CLIMBING) {
             if (isTouchingGoal()) {
             }
             if (xUpdate_and_checkIfWon()) {
@@ -36,7 +36,7 @@ public class Player {
                 goToNextLevel();
                 return;
             }
-        }
+        //}
     }
     
     boolean isTouchingGoal() {
@@ -95,6 +95,10 @@ public class Player {
             vy = 0;
         }
         return false;
+    }
+    
+    int getYinGrid() {
+        return int(y / pixelsPerBlock);
     }
     
     Wall getWallPlayerIsInsideOf() {

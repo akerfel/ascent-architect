@@ -15,26 +15,27 @@ void keyPressed() {
 }
 
 void handleBuildingInput(int key) {
-    if (keyCode == UP || key == 'w') {
+    if (keyCode == UP) {
         currentPiece.tryToRotate();
     }
-    if (keyCode == LEFT || key == 'a') {
+    if (keyCode == LEFT) {
         currentPiece.tryToMoveLeft();
     }
-    if (keyCode == RIGHT || key == 'd') {
+    if (keyCode == RIGHT) {
         currentPiece.tryToMoveRight();
     }
-    if (keyCode == DOWN || key == 's') {
+    if (keyCode == DOWN) {
         makePieceFallOrSpawnNewPiece();
         lastTimeCheck = millis();
     }
 
-    if (key == ' ') {
+    if (key == 'c') {
         // Make current piece fall until a new piece is spawned.
         while (!makePieceFallOrSpawnNewPiece());
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
     }
+    
 
     if (key == 'c') {
         holdCurrentPiece();
@@ -42,13 +43,13 @@ void handleBuildingInput(int key) {
 }
 
 void handleClimbingInput(int key) {
-    if (key == 'a') {
+    if (key == 'a' || key == 'A') {
         player.movingLeft = true;  
     }
-    if (key == 'd') {
+    if (key == 'd' || key == 'D') {
         player.movingRight = true;  
     }
-    if (key == ' ') {
+    if (key == ' ' || key == 'w' || key == 'W') {
         player.jump(); 
     }
 }
@@ -58,10 +59,10 @@ void keyReleased() {
 }
 
 void handleKeyReleasedClimbing(int key) {
-    if (key == 'a') {
+    if (key == 'a' || key == 'A') {
         player.movingLeft = false;  
     }
-    if (key == 'd') {
+    if (key == 'd' || key == 'D') {
         player.movingRight = false;  
     }    
 }

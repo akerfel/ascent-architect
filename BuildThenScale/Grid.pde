@@ -7,6 +7,15 @@ public class Grid {
         grid = new Block[w][h];
     }
     
+    public void initializeBlocks() {
+        for (int x = 0; x < w; x++) {
+            for (int y = 0; y < h; y++) {
+                boolean isFilled = y == h - 1 || x == 0 || x == w - 1;
+                grid[x][y] = new Block(isFilled);
+            }
+        }
+    }
+    
     public void transferLevelToGrid(char[][] level) {
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
