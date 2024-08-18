@@ -45,6 +45,10 @@ int distancePiecesSpawnAbovePlayer;
 void setup() {
     size(600, 1000);
     
+    initializeState();
+}
+
+void initializeState() {
     // Cheats
     onlySpawnLongPieces = false;
 
@@ -86,13 +90,17 @@ void setup() {
     canHoldPiece = false;
     gameOver = false;
     gameState = GameState.GAMEACTIVE;
-    distancePiecesSpawnAbovePlayer = 15;
+    distancePiecesSpawnAbovePlayer = 15;    
 }
 
 void gameOver() {
     drawEverything();
     gameState = GameState.GAMEOVER;
     saveCurrentScore();  // will only save if actually is new highscore
+}
+
+void resetGame() {
+    initializeState();
 }
 
 // This function is called ~60 times per second.

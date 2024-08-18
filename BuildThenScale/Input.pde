@@ -1,6 +1,25 @@
 void keyPressed() {
+    switch(gameState) {
+    case GAMEACTIVE:
+        keysPressedGAMEACTIVE();
+        break;
+    case GAMEOVER:
+        keysPressedGAMEOVER();
+        break;
+    case STARTSCREEN:
+        break;
+    }
+}
+
+void keysPressedGAMEACTIVE() {
     handleBuildingInput(key);
     handleClimbingInput(key);
+}
+
+void keysPressedGAMEOVER() {
+    if (key == ENTER || key == 'c' || key == ' ') {
+        resetGame();
+    }
 }
 
 void handleBuildingInput(int key) {
