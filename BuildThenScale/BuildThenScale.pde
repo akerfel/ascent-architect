@@ -1,7 +1,3 @@
-// In this file, all global variables and declared and initialized,
-// and the draw() method is defined, which is called ~60 times per second.
-// The setup() method is also called, which is called once, at startup.
-
 // Cheats
 boolean onlySpawnLongPieces;
 
