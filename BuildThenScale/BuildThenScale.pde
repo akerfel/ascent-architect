@@ -40,7 +40,6 @@ int distancePiecesSpawnAbovePlayer;
 // This function is called once, at startup.
 void setup() {
     size(600, 1000);
-    
     initializeState();
 }
 
