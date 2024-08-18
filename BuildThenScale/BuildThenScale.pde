@@ -19,6 +19,13 @@ color backgroundColor;
 color gridBackgroundColor;
 color goalColor;
 
+// Textures
+PImage stoneTexture;
+
+// Dynamic CLIMBING variables
+Player player;
+ArrayList<Wall> walls;
+
 // Dynamic BUILDING variables
 int currentLevelNum;
 int lastTimeCheck;
@@ -28,10 +35,7 @@ Piece heldPiece;
 boolean canHoldPiece;
 boolean gameOver;
 GameState gameState;
-
-// Dynamic CLIMBING variables
-Player player;
-ArrayList<Wall> walls;
+int distancePiecesSpawnAbovePlayer;
 
 // This function is called once, at startup.
 void setup() {
@@ -42,8 +46,8 @@ void setup() {
 
     // Settings
     gridWidth = 14;
-    gridHeight = 80;
-    pixelsPerBlock = height/gridHeight * 4;
+    gridHeight = 1000;
+    pixelsPerBlock = height/80 * 4;
     timeIntervalFlag = 500;
     playerLength = pixelsPerBlock * 2/3;
     playerXstartPos = pixelsPerBlock * 2;
@@ -53,6 +57,9 @@ void setup() {
     backgroundColor = color(0);
     gridBackgroundColor = color(135, 206, 235);
     goalColor = color(203, 209, 25);
+    
+    // Texture
+    stoneTexture = loadImage("stone.png");
     
     // Dynamic CLIMBING variables
     player = new Player(0, 0);
@@ -70,6 +77,7 @@ void setup() {
     canHoldPiece = false;
     gameOver = false;
     gameState = GameState.BUILDING;
+    distancePiecesSpawnAbovePlayer = 15;
 }
 
 // This function is called ~60 times per second.

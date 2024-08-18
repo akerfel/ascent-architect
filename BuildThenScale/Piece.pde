@@ -32,8 +32,8 @@ abstract public class Piece {
     }
 
     void setStartCoordinates() {
-        y = player.getYinGrid() - 14;
-        x = gridWidth/2 + xOffset;
+        y = player.getYinGrid() - distancePiecesSpawnAbovePlayer;
+        x = gridWidth/2 + xOffset - 1;
     }
 
     // Return true if rotation was succesful, otherwise false.

@@ -21,17 +21,22 @@ void drawGrid() {
 }
 
 void drawBlock(Block block, int x, int y) {
+    int xpos = x * pixelsPerBlock;
+    int ypos = y * pixelsPerBlock;
+    int w = pixelsPerBlock;
+    int h = pixelsPerBlock;
+    
     if (block.isFilled) {
-        fill(block.rgbColor);
+        image(stoneTexture, xpos, ypos, w, h);
+        return;
     }
     else if (block.isGoal) {
         fill(block.rgbColor);
     }
     else {
         fill(gridBackgroundColor);
-        rect(x * pixelsPerBlock, y * pixelsPerBlock, pixelsPerBlock, pixelsPerBlock);
     }
-    rect(x * pixelsPerBlock, y * pixelsPerBlock, pixelsPerBlock, pixelsPerBlock);
+    rect(xpos, ypos, w, h);
 }
 
 void drawHeldPiece() {
