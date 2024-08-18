@@ -97,8 +97,16 @@ public class Player {
         return false;
     }
     
+    int getXinGrid() {
+        return int(x / pixelsPerBlock);
+    }
+    
     int getYinGrid() {
         return int(y / pixelsPerBlock);
+    }
+    
+    Block getPlayerBlock() {
+        return grid.grid[getXinGrid()][getYinGrid()];
     }
     
     Wall getWallPlayerIsInsideOf() {

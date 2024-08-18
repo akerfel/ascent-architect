@@ -26,7 +26,7 @@ abstract public class Piece {
         setStartCoordinates();
         setBlocksBasedOnRotation();
         if (pieceIsCollidingWithFilledBlock()) {
-            fillBlocks();
+            fillBlocks_and_checkIfGAMEOVER();
             gameOver = true;
         }
     }
@@ -43,12 +43,12 @@ abstract public class Piece {
 
         if (pieceIsOutsideGrid() || pieceIsCollidingWithFilledBlock()) {
             antiRotate();
-            fillBlocks();
+            fillBlocks_and_checkIfGAMEOVER();
             return false;
         }
 
         setBlocksBasedOnRotation();
-        fillBlocks();
+        fillBlocks_and_checkIfGAMEOVER();
         return true;
     }
 
@@ -112,10 +112,10 @@ abstract public class Piece {
         x--;
         if (pieceIsOutsideGrid() || pieceIsCollidingWithFilledBlock()) {
             x++;
-            fillBlocks();
+            fillBlocks_and_checkIfGAMEOVER();
             return false;
         }
-        fillBlocks();
+        fillBlocks_and_checkIfGAMEOVER();
         return true;
     }
 
@@ -125,10 +125,10 @@ abstract public class Piece {
         x++;
         if (pieceIsOutsideGrid() || pieceIsCollidingWithFilledBlock()) {
             x--;
-            fillBlocks();
+            fillBlocks_and_checkIfGAMEOVER();
             return false;
         }
-        fillBlocks();
+        fillBlocks_and_checkIfGAMEOVER();
         return true;
     }
 
@@ -146,22 +146,33 @@ abstract public class Piece {
         }
     }
 
-    void fillBlocks() {
+    void fillBlocks_and_checkIfGAMEOVER() {
         for (int i = 0; i < 4; i++) {
-            fillBlockAndSetColor(x + int(blocks[i].x), y + int(blocks[i].y), rgbColor);
-            grid.grid[x + int(blocks[i].x)][y + int(blocks[i].y)].isFilled = true;
+            PVector blockVec = blocks[i];
+            //fillBlockAndSetColor(x + int(blockVec.x), y + int(blockVec.y), rgbColor); // no need for colors when we have textures
+            int gridX = x + int(blockVec.x);
+            int gridY = y + int(blockVec.y);
+            
+            grid.grid[gridX][gridY].isFilled = true;
+            checkIfPlayerCrushedByBlock(gridX, gridY);
         }
     }
+    
+    private void checkIfPlayerCrushedByBlock(int gridX, int gridY) {
+        if (gridX == player.getXinGrid() && gridY == player.getYinGrid()) {
+            gameOver();
+        } 
+    }
 
-    boolean fallOneStep() {
+    boolean fallOneStep_and_checkIfGAMEOVER() {
         unfillBlocks();
         y++;
         if (pieceIsOutsideGrid() || pieceIsCollidingWithFilledBlock()) {
             y--;
-            fillBlocks();
+            fillBlocks_and_checkIfGAMEOVER();
             return false;
         }
-        fillBlocks();
+        fillBlocks_and_checkIfGAMEOVER();
         return true;
     }
 

@@ -85,7 +85,7 @@ void initializeState() {
     grid.initializeBlocks();
     lastTimeCheck = millis();
     currentPiece = createRandomPiece();
-    currentPiece.fillBlocks();
+    currentPiece.fillBlocks_and_checkIfGAMEOVER();
     heldPiece = null;
     canHoldPiece = false;
     gameOver = false;
@@ -94,7 +94,6 @@ void initializeState() {
 }
 
 void gameOver() {
-    drawEverything();
     gameState = GameState.GAMEOVER;
     saveCurrentScore();  // will only save if actually is new highscore
 }

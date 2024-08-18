@@ -8,7 +8,7 @@ void updateBuildingGameStateIfTimerReady() {
 // Makes currentPiece fall, or spawns a new piece if currentPiece has landed.
 // Returns true if new piece spawned, otherwise false.
 boolean makePieceFallOrSpawnNewPiece() {
-    if (!currentPiece.fallOneStep()) {
+    if (!currentPiece.fallOneStep_and_checkIfGAMEOVER()) { 
         currentPiece = createRandomPiece();
         checkForLineClears();
         canHoldPiece = true;
@@ -98,7 +98,7 @@ void holdCurrentPiece() {
             currentPiece.unfillBlocks();
             heldPiece = currentPiece;
             currentPiece = createRandomPiece();
-            currentPiece.fillBlocks();
+            currentPiece.fillBlocks_and_checkIfGAMEOVER();
             heldPiece.setRotation(0);
             heldPiece.setStartCoordinates();
         } else {
@@ -107,7 +107,7 @@ void holdCurrentPiece() {
             heldPiece = currentPiece;
             currentPiece = tempPiece;
             currentPiece.setStartCoordinates();
-            currentPiece.fillBlocks();
+            currentPiece.fillBlocks_and_checkIfGAMEOVER();
             heldPiece.setStartCoordinates();
             heldPiece.setRotation(0);
         }
