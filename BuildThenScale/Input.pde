@@ -27,14 +27,13 @@ void handleBuildingInput(int key) {
         currentPiece.tryToRotate();
     }
     if (keyCode == LEFT) {
-        currentPiece.tryToMoveLeft();
+        movingPieceLeft = true;
     }
     if (keyCode == RIGHT) {
-        currentPiece.tryToMoveRight();
+        movingPieceRight = true;
     }
     if (keyCode == DOWN) {
-        makePieceFallOrSpawnNewPiece();
-        lastTimeCheck = millis();
+        movingPieceDown = true;
     }
     
     if (key == 'x') {
@@ -67,10 +66,23 @@ void handleClimbingInput(int key) {
 }
 
 void keyReleased() {
-    handleKeyReleasedClimbing(key);    
+    handleKeyReleasedBuilding();   
+    handleKeyReleasedClimbing();    
 }
 
-void handleKeyReleasedClimbing(int key) {
+void handleKeyReleasedBuilding() {
+    if (keyCode == LEFT) {
+        movingPieceLeft = false;  
+    }
+    if (keyCode == RIGHT) {
+        movingPieceRight = false;  
+    }    
+    if (keyCode == DOWN) {
+        movingPieceDown = false;  
+    }    
+}
+
+void handleKeyReleasedClimbing() {
     if (key == 'a' || key == 'A') {
         player.movingLeft = false;  
     }

@@ -36,6 +36,14 @@ GameState gameState;
 int distancePiecesSpawnAbovePlayer;
 int numBlocksVisibleBelowPlayer;
 
+// Moving piece with input
+boolean movingPieceLeft;
+boolean movingPieceRight;
+boolean movingPieceDown;
+int millisMovedPieceRight;
+int millisMovedPieceLeft;
+int millisMovedPieceDown;
+
 // Colors
 color backgroundColor;
 color gridBackgroundColor;
@@ -81,7 +89,6 @@ void initializeState() {
     player = new Player(0, 0);
     setPlayerToStartPos();
     
-    
     // score and highscore
     score = 0;
     createDataFolderIfDoesNotExist();
@@ -99,6 +106,14 @@ void initializeState() {
     gameState = GameState.GAMEACTIVE;
     distancePiecesSpawnAbovePlayer = 15;    
     numBlocksVisibleBelowPlayer = 6;
+    
+    // Moving piece with input
+    movingPieceLeft = false;
+    movingPieceRight = false;
+    movingPieceDown = false;
+    millisMovedPieceRight = millis();
+    millisMovedPieceLeft = millis();
+    millisMovedPieceDown = millis();
 }
 
 void gameOver() {

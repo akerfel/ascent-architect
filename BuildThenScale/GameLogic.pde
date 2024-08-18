@@ -3,6 +3,37 @@ void updateBuildingGameStateIfTimerReady() {
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
     }
+    movePieceFromInput();
+}
+
+void movePieceFromInput() {
+    movePieceRightFromInput();
+    movePieceLeftFromInput();
+    movePieceDownFromInput();
+}
+
+void movePieceRightFromInput() {
+    if (movingPieceRight && millis() - millisMovedPieceRight > 100) {
+        currentPiece.tryToMoveRight(); 
+        millisMovedPieceRight = millis();
+    }
+}
+
+void movePieceLeftFromInput() {
+    if (movingPieceLeft && millis() - millisMovedPieceLeft > 100) {
+        currentPiece.tryToMoveLeft(); 
+        millisMovedPieceLeft = millis();
+    }
+}
+
+void movePieceDownFromInput() {
+    if (millis() - millisMovedPieceDown > 50) {
+         if (movingPieceDown) {
+            makePieceFallOrSpawnNewPiece();
+            lastTimeCheck = millis();
+            millisMovedPieceDown = millis(); 
+        }
+    }    
 }
 
 boolean currentPieceIsOutOfSight() {
