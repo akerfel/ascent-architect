@@ -1,5 +1,5 @@
 void updateBuildingGameStateIfTimerReady() {
-    if (millis() > lastTimeCheck + timeIntervalFlag) {
+    if (millis() > lastTimeCheck + tickTime) {
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
     }

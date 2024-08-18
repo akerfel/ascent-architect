@@ -3,12 +3,18 @@ boolean onlySpawnLongPieces;
 
 // Settings
 int pixelsPerBlock;
-int timeIntervalFlag;
+int tickTime;
 int gridWidth;
 int gridHeight;
 int playerLength;
 int playerXstartPos;
 int playerYstartPos;
+
+// Time per tick
+int initialtickTime;
+int decreaseIntickTimePerLevel;
+int decreaseTickTimeAfterScore;
+int minimumtickTime;
 
 // Colors
 color backgroundColor;
@@ -51,10 +57,16 @@ void initializeState() {
     gridWidth = 14;
     gridHeight = 1000;
     pixelsPerBlock = 1000/80 * 3;
-    timeIntervalFlag = 500;
     playerLength = pixelsPerBlock * 2/3;
     playerXstartPos = pixelsPerBlock * 2;
     playerYstartPos = (gridHeight - 1) * pixelsPerBlock - pixelsPerBlock/8;
+    
+    // Time per tick
+    initialtickTime = 700;
+    decreaseIntickTimePerLevel = 80;
+    minimumtickTime = 100;
+    decreaseTickTimeAfterScore = 10;
+    tickTime = initialtickTime;
     
     // Colors
     backgroundColor = color(0);

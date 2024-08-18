@@ -6,7 +6,13 @@ void updateClimbingGameState() {
 
 void updateScore() {
     int currentHeight = gridHeight - player.getYinGrid() - 2;
-    score = max(score, currentHeight);
+    if (currentHeight > score) {
+        score = currentHeight;
+        int timeLevel = int(score / decreaseTickTimeAfterScore);
+        int possibleNewTickTime = initialtickTime - timeLevel * decreaseIntickTimePerLevel;
+        tickTime = max(minimumtickTime, possibleNewTickTime);
+        println("New tick time: " + tickTime);
+    }
 }
 
 void updateWallsAccordingToGrid() {
