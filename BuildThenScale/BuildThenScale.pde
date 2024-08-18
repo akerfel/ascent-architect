@@ -11,6 +11,11 @@ int playerYstartPos;
 int distancePiecesSpawnAbovePlayer;
 int numBlocksVisibleBelowPlayer;
 
+// Controls settings
+boolean movePieceNoDelay = true;
+int delayMovePieceLeftOrRight;
+int delayMovePieceDown;
+
 // The falling piece moves down one step per tick
 int initialTickTime;
 int minimumTickTime;
@@ -32,7 +37,7 @@ boolean canHoldPiece;
 boolean gameOver;
 GameState gameState;
 
-// Moving piece with input
+// Moving piece with input. Only used if movePieceNoDelay is true.
 boolean movingPieceLeft;
 boolean movingPieceRight;
 boolean movingPieceDown;
@@ -72,6 +77,10 @@ void initializeState() {
     playerYstartPos = (gridHeight - 1) * pixelsPerBlock - pixelsPerBlock/8;
     distancePiecesSpawnAbovePlayer = 15;    
     numBlocksVisibleBelowPlayer = 6;
+    
+    // Controls settings
+    delayMovePieceLeftOrRight = 80;
+    delayMovePieceDown = 40;
     
     // Time per tick
     initialTickTime = 700;

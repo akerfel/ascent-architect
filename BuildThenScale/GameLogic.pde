@@ -3,7 +3,9 @@ void updateBuildingGameStateIfTimerReady() {
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
     }
-    movePieceFromInput();
+    if (movePieceNoDelay) {
+        movePieceFromInput();
+    }
 }
 
 void movePieceFromInput() {
@@ -13,21 +15,21 @@ void movePieceFromInput() {
 }
 
 void movePieceRightFromInput() {
-    if (movingPieceRight && millis() - millisMovedPieceRight > 100) {
+    if (movingPieceRight && millis() - millisMovedPieceRight > delayMovePieceLeftOrRight) {
         currentPiece.tryToMoveRight(); 
         millisMovedPieceRight = millis();
     }
 }
 
 void movePieceLeftFromInput() {
-    if (movingPieceLeft && millis() - millisMovedPieceLeft > 100) {
+    if (movingPieceLeft && millis() - millisMovedPieceLeft > delayMovePieceLeftOrRight) {
         currentPiece.tryToMoveLeft(); 
         millisMovedPieceLeft = millis();
     }
 }
 
 void movePieceDownFromInput() {
-    if (millis() - millisMovedPieceDown > 50) {
+    if (millis() - millisMovedPieceDown > delayMovePieceDown) {
          if (movingPieceDown) {
             makePieceFallOrSpawnNewPiece();
             lastTimeCheck = millis();

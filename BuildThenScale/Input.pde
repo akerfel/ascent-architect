@@ -23,17 +23,10 @@ void keysPressedGAMEOVER() {
 }
 
 void handleBuildingInput(int key) {
+    movePieceLeftRightOrDown();
+    
     if (keyCode == UP) {
         currentPiece.tryToRotate();
-    }
-    if (keyCode == LEFT) {
-        movingPieceLeft = true;
-    }
-    if (keyCode == RIGHT) {
-        movingPieceRight = true;
-    }
-    if (keyCode == DOWN) {
-        movingPieceDown = true;
     }
     
     if (key == 'x') {
@@ -50,6 +43,31 @@ void handleBuildingInput(int key) {
 
     if (key == 'c') {
         holdCurrentPiece();
+    }
+}
+
+void movePieceLeftRightOrDown() {
+    if (movePieceNoDelay) {
+        if (keyCode == LEFT) {
+            movingPieceLeft = true;
+        }
+        if (keyCode == RIGHT) {
+            movingPieceRight = true;
+        }
+        if (keyCode == DOWN) {
+            movingPieceDown = true;
+        }
+    }
+    else {
+        if (keyCode == LEFT) {
+            currentPiece.tryToMoveLeft();
+        }
+        if (keyCode == RIGHT) {
+            currentPiece.tryToMoveRight();
+        }
+        if (keyCode == DOWN) {
+            makePieceFallOrSpawnNewPiece();
+        }
     }
 }
 
