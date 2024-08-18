@@ -17,7 +17,7 @@ void keysPressedGAMEACTIVE() {
 }
 
 void keysPressedGAMEOVER() {
-    if (key == ENTER || key == 'c' || key == ' ') {
+    if (key == ENTER || key == ' ') {
         resetGame();
     }
 }
