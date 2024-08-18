@@ -27,7 +27,7 @@ abstract public class Piece {
         setBlocksBasedOnRotation();
         if (pieceIsCollidingWithFilledBlock()) {
             fillBlocks_and_checkIfGAMEOVER();
-            gameOver = true;
+            gameState = GameState.GAMEOVER;
         }
     }
 

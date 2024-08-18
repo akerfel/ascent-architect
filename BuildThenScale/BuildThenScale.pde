@@ -88,7 +88,6 @@ void initializeState() {
     currentPiece.fillBlocks_and_checkIfGAMEOVER();
     heldPiece = null;
     canHoldPiece = false;
-    gameOver = false;
     gameState = GameState.GAMEACTIVE;
     distancePiecesSpawnAbovePlayer = 15;    
 }
