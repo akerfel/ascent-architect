@@ -1,8 +1,12 @@
 void updateBuildingGameStateIfTimerReady() {
-    if (millis() > lastTimeCheck + tickTime) {
+    if (millis() > lastTimeCheck + tickTime || currentPieceIsOutOfSight()) {
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
     }
+}
+
+boolean currentPieceIsOutOfSight() {
+    return currentPiece.y > player.getYinGrid() + numBlocksVisibleBelowPlayer;
 }
 
 // Makes currentPiece fall, or spawns a new piece if currentPiece has landed.

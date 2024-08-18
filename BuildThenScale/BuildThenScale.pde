@@ -16,14 +16,6 @@ int decreaseIntickTimePerLevel;
 int decreaseTickTimeAfterScore;
 int minimumtickTime;
 
-// Colors
-color backgroundColor;
-color gridBackgroundColor;
-color goalColor;
-
-// Textures
-PImage stoneTexture;
-
 // Dynamic CLIMBING variables
 Player player;
 ArrayList<Wall> walls;
@@ -42,6 +34,15 @@ boolean canHoldPiece;
 boolean gameOver;
 GameState gameState;
 int distancePiecesSpawnAbovePlayer;
+int numBlocksVisibleBelowPlayer;
+
+// Colors
+color backgroundColor;
+color gridBackgroundColor;
+color goalColor;
+
+// Textures
+PImage stoneTexture;
 
 // This function is called once, at startup.
 void setup() {
@@ -97,6 +98,7 @@ void initializeState() {
     canHoldPiece = false;
     gameState = GameState.GAMEACTIVE;
     distancePiecesSpawnAbovePlayer = 15;    
+    numBlocksVisibleBelowPlayer = 6;
 }
 
 void gameOver() {

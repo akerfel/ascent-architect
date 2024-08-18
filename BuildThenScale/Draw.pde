@@ -1,6 +1,6 @@
 void drawEverything() {
     background(backgroundColor);
-    int yTranslate = - (player.y - height + pixelsPerBlock * 6);
+    int yTranslate = - (player.y - height + pixelsPerBlock * numBlocksVisibleBelowPlayer);
     translate(0, yTranslate);
     drawGrid();
     drawHeldPiece();
