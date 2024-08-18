@@ -25,6 +25,7 @@ PImage stoneTexture;
 // Dynamic CLIMBING variables
 Player player;
 ArrayList<Wall> walls;
+int score;
 
 // Dynamic BUILDING variables
 int currentLevelNum;
@@ -39,7 +40,7 @@ int distancePiecesSpawnAbovePlayer;
 
 // This function is called once, at startup.
 void setup() {
-    size(800, 800);
+    size(800, 1200);
     
     // Cheats
     onlySpawnLongPieces = false;
@@ -47,11 +48,11 @@ void setup() {
     // Settings
     gridWidth = 14;
     gridHeight = 1000;
-    pixelsPerBlock = height/80 * 4;
+    pixelsPerBlock = 1000/80 * 4;
     timeIntervalFlag = 500;
     playerLength = pixelsPerBlock * 2/3;
     playerXstartPos = pixelsPerBlock * 2;
-    playerYstartPos = (gridHeight - 4) * pixelsPerBlock - pixelsPerBlock/8;
+    playerYstartPos = (gridHeight - 1) * pixelsPerBlock - pixelsPerBlock/8;
     
     // Colors
     backgroundColor = color(0);

@@ -1,12 +1,21 @@
 void drawEverything() {
     background(backgroundColor);
-    translate(0, - (player.y - height + pixelsPerBlock * 6));
+    int yTranslate = - (player.y - height + pixelsPerBlock * 6);
+    translate(0, yTranslate);
     drawGrid();
     drawHeldPiece();
     if (gameOver) {
         drawGameOver();
     }
     drawPlayer();
+    translate(0, -yTranslate);
+    drawScore();
+}
+
+void drawScore() {
+    fill(color(255, 255, 255));
+    textSize(32);
+    text(score, width - 60, 60);
 }
 
 void drawGrid() {

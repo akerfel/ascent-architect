@@ -1,6 +1,12 @@
 void updateClimbingGameState() {
     updateWallsAccordingToGrid();
     player.update();
+    updateScore();
+}
+
+void updateScore() {
+    int currentHeight = gridHeight - player.getYinGrid() - 2;
+    score = max(score, currentHeight);
 }
 
 void updateWallsAccordingToGrid() {
