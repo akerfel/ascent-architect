@@ -1,16 +1,5 @@
 void keyPressed() {
-    if (key == ENTER) {
-        if (gameState == GameState.BUILDING) {
-            gameState = GameState.CLIMBING;    
-        }
-        else if (gameState == GameState.CLIMBING) {
-            gameState = GameState.BUILDING;    
-        }
-    }
-    
-    if (gameState == GameState.BUILDING) {
-        handleBuildingInput(key);
-    }
+    handleBuildingInput(key);
     handleClimbingInput(key);
 }
 
@@ -27,6 +16,10 @@ void handleBuildingInput(int key) {
     if (keyCode == DOWN) {
         makePieceFallOrSpawnNewPiece();
         lastTimeCheck = millis();
+    }
+    
+    if (key == 'x') {
+        gameOver();    
     }
 
     if (key == 'c') {

@@ -1,4 +1,5 @@
-enum GameState {
-    BUILDING,
-    CLIMBING
+public enum GameState {
+    GAMEOVER,
+        STARTSCREEN,
+        GAMEACTIVE
 }

@@ -62,11 +62,32 @@ void drawHeldPiece() {
     }
 }
 
+
 void drawGameOver() {
-    textSize(40);
-    textAlign(CENTER, CENTER);
-    fill(200, 0, 0);
-    text("GAME OVER", width/2, height/2);
+    fill(255, 255, 255);
+    textAlign(CENTER);
+    text("GAME OVER", width/2, 50);
+    fill(0, 200, 0);
+    text("Score: " + score, width/2, 100);
+    fill(255, 255, 255);
+    text("Restart: Space", width/2, 150);
+    fill(255, 255, 255);
+    text("Highscores:", width/2, 200);
+    drawHighScores();
+}
+
+void drawHighScores() {
+    ArrayList<Integer> highscores = getHighscores();
+    for (int i = 0; i < highscores.size(); i++) {
+        int scoreToPrint = highscores.get(i);
+        if (scoreToPrint == score && (i == highscores.size() - 1 || (i < highscores.size() - 1 && highscores.get(i+1) != score))) {
+            fill(0, 200, 0);
+        } else {
+            fill(255, 255, 255);
+        }
+        text((i+1) + ". " + str(scoreToPrint), width/2, 250 + i * 50);
+    }
+    rectMode(CORNER);
 }
 
 void drawPlayer() {

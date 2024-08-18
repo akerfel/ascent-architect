@@ -25,7 +25,10 @@ PImage stoneTexture;
 // Dynamic CLIMBING variables
 Player player;
 ArrayList<Wall> walls;
+
+// score and highscore
 int score;
+PrintWriter output;
 
 // Dynamic BUILDING variables
 int currentLevelNum;
@@ -40,7 +43,7 @@ int distancePiecesSpawnAbovePlayer;
 
 // This function is called once, at startup.
 void setup() {
-    size(800, 1200);
+    size(600, 1000);
     
     // Cheats
     onlySpawnLongPieces = false;
@@ -48,7 +51,7 @@ void setup() {
     // Settings
     gridWidth = 14;
     gridHeight = 1000;
-    pixelsPerBlock = 1000/80 * 4;
+    pixelsPerBlock = 1000/80 * 3;
     timeIntervalFlag = 500;
     playerLength = pixelsPerBlock * 2/3;
     playerXstartPos = pixelsPerBlock * 2;
@@ -65,7 +68,12 @@ void setup() {
     // Dynamic CLIMBING variables
     player = new Player(0, 0);
     setPlayerToStartPos();
-
+    
+    
+    // score and highscore
+    score = 0;
+    createDataFolderIfDoesNotExist();
+    
     // Dynamic BUILDING variables
     currentLevelNum = 0;
     grid = new Grid();
@@ -77,17 +85,28 @@ void setup() {
     heldPiece = null;
     canHoldPiece = false;
     gameOver = false;
-    gameState = GameState.BUILDING;
+    gameState = GameState.GAMEACTIVE;
     distancePiecesSpawnAbovePlayer = 15;
+}
+
+void gameOver() {
+    drawEverything();
+    gameState = GameState.GAMEOVER;
+    saveCurrentScore();  // will only save if actually is new highscore
 }
 
 // This function is called ~60 times per second.
 void draw() {
-    //if (gameState == GameState.BUILDING) {
+    switch(gameState) {
+    case GAMEACTIVE:
         updateBuildingGameStateIfTimerReady();
-    //}
-    //else if (gameState == GameState.CLIMBING) {
         updateClimbingGameState();
-    //}
-    drawEverything();
+        drawEverything();
+        break;
+    case GAMEOVER:
+        drawGameOver();
+        break;
+    case STARTSCREEN:
+        break;
+    }
 }
