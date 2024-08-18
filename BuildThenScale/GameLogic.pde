@@ -1,5 +1,5 @@
 void updateBuildingGameStateIfTimerReady() {
-    if (millis() > lastTimeCheck + tickTime || currentPieceIsOutOfSight()) {
+    if (millis() > lastTimeCheck + currentTickTime || currentPieceIsOutOfSight()) {
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
     }
@@ -97,6 +97,9 @@ boolean gridBlockIsFilled(int x, int y) {
 }
 
 Piece createRandomPiece() {
+    piecesSpawned++;
+    decreaseTickTimeIfEnoughPiecesSpawned();
+    
     if (onlySpawnLongPieces) {
         return new Piece_I();
     }
@@ -119,6 +122,14 @@ Piece createRandomPiece() {
         return new Piece_Z();
     }
     return null;
+}
+
+void decreaseTickTimeIfEnoughPiecesSpawned() {
+    int timeLevel = int(piecesSpawned / levelIncrementPerNumOfPieces);
+    int possibleNewTickTime = initialTickTime - timeLevel * decreaseInTickTimePerLevel;
+    currentTickTime = max(minimumTickTime, possibleNewTickTime);
+    println("Pieces spawned: " + piecesSpawned);
+    println("Tick time: " + currentTickTime);
 }
 
 void fillBlockAndSetColor(int x, int y, color rgbColor) {
