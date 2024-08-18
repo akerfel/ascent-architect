@@ -8,10 +8,10 @@ void updateScore() {
     int currentHeight = gridHeight - player.getYinGrid() - 2;
     if (currentHeight > score) {
         score = currentHeight;
-        int timeLevel = int(score / decreaseTickTimeAfterScore);
-        int possibleNewTickTime = initialtickTime - timeLevel * decreaseIntickTimePerLevel;
-        tickTime = max(minimumtickTime, possibleNewTickTime);
-        println("New tick time: " + tickTime);
+        int timeLevel = int(score / levelIncrementPerScore);
+        int possibleNewTickTime = initialTickTime - timeLevel * decreaseInTickTimePerLevel;
+        currentTickTime = max(minimumTickTime, possibleNewTickTime);
+        println("New tick time: " + currentTickTime);
     }
 }
 

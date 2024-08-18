@@ -3,26 +3,29 @@ boolean onlySpawnLongPieces;
 
 // Settings
 int pixelsPerBlock;
-int tickTime;
 int gridWidth;
 int gridHeight;
 int playerLength;
 int playerXstartPos;
 int playerYstartPos;
+int distancePiecesSpawnAbovePlayer;
+int numBlocksVisibleBelowPlayer;
 
-// Time per tick
-int initialtickTime;
-int decreaseIntickTimePerLevel;
-int decreaseTickTimeAfterScore;
-int minimumtickTime;
+// The falling piece moves down one step per tick
+int initialTickTime;
+int minimumTickTime;
+int decreaseInTickTimePerLevel;
+int levelIncrementPerScore;
+int currentTickTime; // changes
+
+// Colors
+color backgroundColor;
+color gridBackgroundColor;
+color goalColor;
 
 // Dynamic CLIMBING variables
 Player player;
 ArrayList<Wall> walls;
-
-// score and highscore
-int score;
-PrintWriter output;
 
 // Dynamic BUILDING variables
 int currentLevelNum;
@@ -33,13 +36,10 @@ Piece heldPiece;
 boolean canHoldPiece;
 boolean gameOver;
 GameState gameState;
-int distancePiecesSpawnAbovePlayer;
-int numBlocksVisibleBelowPlayer;
 
-// Colors
-color backgroundColor;
-color gridBackgroundColor;
-color goalColor;
+// score and highscore
+int score;
+PrintWriter output;
 
 // Textures
 PImage stoneTexture;
@@ -61,13 +61,15 @@ void initializeState() {
     playerLength = pixelsPerBlock * 2/3;
     playerXstartPos = pixelsPerBlock * 2;
     playerYstartPos = (gridHeight - 1) * pixelsPerBlock - pixelsPerBlock/8;
+    distancePiecesSpawnAbovePlayer = 15;    
+    numBlocksVisibleBelowPlayer = 6;
     
     // Time per tick
-    initialtickTime = 700;
-    decreaseIntickTimePerLevel = 80;
-    minimumtickTime = 100;
-    decreaseTickTimeAfterScore = 10;
-    tickTime = initialtickTime;
+    initialTickTime = 700;
+    decreaseInTickTimePerLevel = 80;
+    minimumTickTime = 100;
+    levelIncrementPerScore = 10;
+    currentTickTime = initialTickTime;
     
     // Colors
     backgroundColor = color(0);
@@ -97,8 +99,6 @@ void initializeState() {
     heldPiece = null;
     canHoldPiece = false;
     gameState = GameState.GAMEACTIVE;
-    distancePiecesSpawnAbovePlayer = 15;    
-    numBlocksVisibleBelowPlayer = 6;
 }
 
 void gameOver() {

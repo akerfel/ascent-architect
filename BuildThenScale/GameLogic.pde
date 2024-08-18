@@ -1,5 +1,5 @@
 void updateBuildingGameStateIfTimerReady() {
-    if (millis() > lastTimeCheck + tickTime || currentPieceIsOutOfSight()) {
+    if (millis() > lastTimeCheck + currentTickTime || currentPieceIsOutOfSight()) {
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
     }
