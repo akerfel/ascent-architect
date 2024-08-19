@@ -21,7 +21,7 @@ void drawScore() {
 void drawGrid() {
     //translate((width - grid.blockLength * grid.w)/2, (height - grid.blockLength * grid.h)/2);
     for (int x = 0; x < grid.w; x++) {
-        for (int y = 0; y < grid.h; y++) {
+        for (int y = grid.h - 1; y > 0; y--) {
             stroke(130, 130, 130);
             noStroke();
             drawBlock(grid.grid[x][y], x, y);
@@ -35,21 +35,20 @@ void drawBlock(Block block, int x, int y) {
     int w = pixelsPerBlock;
     int h = pixelsPerBlock;
     
-    if (block.isLava) {
-        image(lavaTexture, xpos, ypos, w, h);
-        return;
-    }
-    else if (block.isFilled) {
+    if (block.isFilled) {
         image(stoneTexture, xpos, ypos, w, h);
-        return;
     }
     else if (block.isGoal) {
         fill(block.rgbColor);
+        rect(xpos, ypos, w, h);
     }
     else {
         fill(gridBackgroundColor);
+        rect(xpos, ypos, w, h);
     }
-    rect(xpos, ypos, w, h);
+    if (block.isLava) {
+        image(lavaGif2, xpos, ypos + pixelsPerBlock/5, w, h);
+    }
 }
 
 void drawHeldPiece() {

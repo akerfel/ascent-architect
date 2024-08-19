@@ -22,7 +22,7 @@ void updateLava() {
 }
 
 void lava_updateCurrentTickTime() {
-    int lava_possibleNewTickTime = lava_initialTickTime - lava_currentLevel * lava_decreaseInTickTimePerLevel;
+    int lava_possibleNewTickTime = lava_initialTickTime - score * lava_decreaseInTickTimePerLevel;
     lava_currentTickTime = max(lava_minimumTickTime, lava_possibleNewTickTime);  
     println(millis() + ": lava_currentTickTimes: " + lava_currentTickTime);
 }

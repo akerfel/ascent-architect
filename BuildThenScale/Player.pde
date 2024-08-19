@@ -37,7 +37,7 @@ public class Player {
     }
     
     void gameOverIfDiesByLava() {
-        if (getYinGrid() >= lava_getYinGrid() - 1) {
+        if (getYinGrid() >= lava_getYinGrid()) {
             gameOver();    
         }
     }

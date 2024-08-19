@@ -1,3 +1,5 @@
+import gifAnimation.*;
+
 // Cheats
 boolean onlySpawnLongPieces;
 
@@ -68,6 +70,9 @@ int piecesSpawned;
 // Textures
 PImage stoneTexture;
 PImage lavaTexture;
+PImage lavaTexture2;
+Gif lavaGif;
+Gif lavaGif2;
 
 // This function is called once, at startup.
 void setup() {
@@ -102,7 +107,7 @@ void initializeState() {
     currentTickTime = initialTickTime;
     
     // Lava
-    lava_initialTickTime = 5000;
+    lava_initialTickTime = 3000;
     lava_minimumTickTime = 1400;
     lava_decreaseInTickTimePerLevel = 20;
     lava_currentTickTime = lava_initialTickTime;
@@ -117,6 +122,11 @@ void initializeState() {
     // Texture
     stoneTexture = loadImage("stone.png");
     lavaTexture = loadImage("lava.png");
+    lavaTexture2 = loadImage("lava2.png");
+    lavaGif = new Gif(this, "animatedLava.gif");
+    lavaGif.play();
+    lavaGif2 = new Gif(this, "animatedLava2.gif");
+    lavaGif2.play();
     
     // Dynamic CLIMBING variables
     player = new Player(0, 0);
