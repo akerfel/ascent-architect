@@ -10,66 +10,70 @@ class StartMenu {
     }
 
     void display() {
-        background(background1);
-        fill(255);
-        textSize(55);
-        textAlign(CENTER, CENTER);
-        text(gameTitle, width / 2, 125);
+    background(background1);
+    fill(255);
+    textSize(55);
+    textAlign(CENTER, CENTER);
+    text(gameTitle, width / 2, 125);
 
-        EasyButton.display();
-        MediumButton.display();
-        HardButton.display();
-        drawMuteIcon();
+    EasyButton.display();
+    MediumButton.display();
+    HardButton.display();
+    drawMuteIcon();
 
-        // Display the instructions text below the buttons
-        textSize(24);
-        textAlign(CENTER, TOP);
-        fill(255);
+    textSize(18);
+    textAlign(CENTER, TOP);
+    fill(255);
 
-        float instructionsY = HardButton.y + HardButton.height / 2 + 45;
-        String[] instructions = {
-            "Build & Climb.",
-            "Don't crush the climber.",
-            "Avoid lava.",
-            "1 or 2 players."
-        };
+    float instructionsY = HardButton.y + HardButton.height / 2 + 35;
+    String[] instructions = {
+        "Instructions",
+        "Climb as high as you can.",
+        "Don't crush the Climber.",
+        "1 Player: You control both roles.",
+        "2 Players: One controls the Builder, the other the Climber.",
+    };
 
-        // Calculate the maximum width of the instructions
-        float maxWidth = 0;
-        for (String instruction : instructions) {
-            float w = textWidth(instruction);
-            if (w > maxWidth) {
-                maxWidth = w;
-            }
-        }
-
-        // Box dimensions with padding
-        float boxWidth = maxWidth + 30; // Padding on both sides
-        float boxHeight = instructions.length * 35 + 12; // Line height and padding
-
-        // Draw the box
-        stroke(255);
-        noFill();
-        rectMode(CENTER);
-        rect(width / 2 + 1, instructionsY + boxHeight / 2, boxWidth, boxHeight);
-        rectMode(CORNER);
-
-        // Draw the instructions text
-        fill(255);
-        for (int i = 0; i < instructions.length; i++) {
-            float textY = instructionsY + i * 35 + 10; // Line height and padding
-            text(instructions[i], width / 2, textY);
-        }
-
-        // Display the controlsTexture at the bottom
-        if (controlsTexture != null) {
-            float imgWidth = controlsTexture.width;
-            float imgHeight = controlsTexture.height;
-            imageMode(CENTER);
-            image(controlsTexture, width / 2, height - imgHeight * 0.65, imgWidth, imgHeight);
-            imageMode(CORNER);
+    float maxWidth = 0;
+    for (String instruction : instructions) {
+        float w = textWidth(instruction);
+        if (w > maxWidth) {
+            maxWidth = w;
         }
     }
+    
+    float boxWidth = maxWidth + 30;
+    float boxHeight = instructions.length * 35 + 12;
+
+    // Box
+    stroke(255);
+    noFill();
+    rectMode(CENTER);
+    rect(width / 2 + 1, instructionsY + boxHeight / 2, boxWidth, boxHeight);
+    rectMode(CORNER);
+    
+    // Draw the instructions text
+    fill(255);
+    for (int i = 0; i < instructions.length; i++) {
+        float textY = instructionsY + i * 35 + 10;
+        text(instructions[i], width / 2, textY);
+
+        // Draw a line right below "Instructions"
+        if (i == 0) {
+            stroke(255);
+            line(width / 2 - boxWidth / 2 + 10, textY + 25, width / 2 + boxWidth / 2 - 10, textY + 25);
+        }
+    }
+
+    // Display the controlsTexture at the bottom
+    if (controlsTexture != null) {
+        float imgWidth = controlsTexture.width;
+        float imgHeight = controlsTexture.height;
+        imageMode(CENTER);
+        image(controlsTexture, width / 2, height - imgHeight * 0.65, imgWidth, imgHeight);
+        imageMode(CORNER);
+    }
+}
 
     void handleMousePressed() {
         if (EasyButton.isClicked(mouseX, mouseY)) {
