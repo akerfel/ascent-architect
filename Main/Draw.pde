@@ -80,7 +80,7 @@ void drawGameOver() {
     textAlign(CENTER);
     text("GAME OVER", width/2, 50);
     fill(0, 200, 0);
-    text("Score: " + score, width/2, 100);
+    text("Reached height: " + score, width/2, 100);
     fill(255, 255, 255);
     text("Menu: Space", width/2, 150);
     fill(255, 255, 255);
