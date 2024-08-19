@@ -71,6 +71,7 @@ int piecesSpawned;
 PImage stoneTexture;
 PImage lavaTexture;
 PImage lavaTexture2;
+PImage background1;
 Gif lavaGif;
 Gif lavaGif2;
 
@@ -87,7 +88,7 @@ void initializeState() {
     // Settings
     gridWidth = 14;
     gridHeight = 1000;
-    pixelsPerBlock = 1000/80 * 3;
+    pixelsPerBlock = width/gridWidth + 1;
     playerLength = pixelsPerBlock * 2/3;
     lava_initialLevelsBelowPlayer = 10;
     playerYstartPos = (gridHeight - lava_initialLevelsBelowPlayer + 1) * pixelsPerBlock - pixelsPerBlock/8;
@@ -123,6 +124,7 @@ void initializeState() {
     stoneTexture = loadImage("stone.png");
     lavaTexture = loadImage("lava.png");
     lavaTexture2 = loadImage("lava2.png");
+    background1 = loadImage("background1.png");
     lavaGif = new Gif(this, "animatedLava.gif");
     lavaGif.play();
     lavaGif2 = new Gif(this, "animatedLava2.gif");

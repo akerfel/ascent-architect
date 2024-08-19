@@ -1,5 +1,5 @@
 void drawEverything() {
-    background(backgroundColor);
+    background(background1);
     int yTranslate = - (player.y - height + pixelsPerBlock * numBlocksVisibleBelowPlayer);
     translate(0, yTranslate);
     drawGrid();
@@ -43,8 +43,8 @@ void drawBlock(Block block, int x, int y) {
         rect(xpos, ypos, w, h);
     }
     else {
-        fill(gridBackgroundColor);
-        rect(xpos, ypos, w, h);
+        //fill(gridBackgroundColor);
+        //rect(xpos, ypos, w, h);
     }
     if (block.isLava) {
         image(lavaGif2, xpos, ypos + pixelsPerBlock/5, w, h);
