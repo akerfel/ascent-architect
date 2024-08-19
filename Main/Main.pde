@@ -141,7 +141,7 @@ void initializeState() {
     currentTickTime = initialTickTime;
     
     // Lava difficulty
-    easy_lava_initialTickTime = 16000;
+    easy_lava_initialTickTime = 14000;
     medium_lava_initialTickTime = 7000;
     hard_lava_initialTickTime = 1700;
     
