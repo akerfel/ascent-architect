@@ -29,7 +29,7 @@ void lava_updateCurrentTickTime() {
 
 void riseLavaLevel() {
     lava_currentLevel++;
-    for (int x = 1; x < grid.w - 1; x++) {
+    for (int x = 0; x < grid.w ; x++) {
         grid.grid[x][lava_getYinGrid()].setIsLava(true);
     }
 }
