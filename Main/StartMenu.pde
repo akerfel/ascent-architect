@@ -4,17 +4,17 @@ class StartMenu {
     Button HardButton;
 
     StartMenu() {
-        EasyButton = new Button("Easy", width / 2, 300);
-        MediumButton = new Button("Medium", width / 2, 400);
-        HardButton = new Button("Hard", width / 2, 500);
+        EasyButton = new Button("Easy", width / 2, 250);
+        MediumButton = new Button("Medium", width / 2, 350);
+        HardButton = new Button("Hard", width / 2, 450);
     }
 
     void display() {
         background(background1);
         fill(255);
-        textSize(32);
+        textSize(55);
         textAlign(CENTER, CENTER);
-        text(gameTitle, width / 2, 100);
+        text(gameTitle, width / 2, 125);
 
         EasyButton.display();
         MediumButton.display();
@@ -26,7 +26,7 @@ class StartMenu {
         textAlign(CENTER, TOP);
         fill(255);
 
-        float instructionsY = HardButton.y + HardButton.height / 2 + 50; // Position text below the quit button
+        float instructionsY = HardButton.y + HardButton.height / 2 + 45;
         String[] instructions = {
             "Build & Climb.",
             "Don't crush the player.",
@@ -65,7 +65,7 @@ class StartMenu {
             float imgWidth = controlsTexture.width;
             float imgHeight = controlsTexture.height;
             imageMode(CENTER);
-            image(controlsTexture, width / 2, height - imgHeight * 1.5, imgWidth, imgHeight);
+            image(controlsTexture, width / 2, height - imgHeight * 0.8, imgWidth, imgHeight);
             imageMode(CORNER);
         }
     }
