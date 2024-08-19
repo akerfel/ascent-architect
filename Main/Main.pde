@@ -107,10 +107,6 @@ void setup() {
     musicFactor = 0.1;
     initializeState();
 }
-color startColor = color(251, 121, 56); // Base color
-color endColor = color(56, 121, 251);   // Alternate color for variety
-float lerpAmount = 0; // Interpolation amount
-float lerpSpeed = 0.01; // Speed of color transition
 
 void initializeState() {
     // Cheats
@@ -134,9 +130,9 @@ void initializeState() {
     delayMovePieceDown = 40;
     
     // Time per tick
-    initialTickTime = 700;
+    initialTickTime = 200;
     decreaseInTickTimePerLevel = 80;
-    minimumTickTime = 100;
+    minimumTickTime = 200;
     levelIncrementPerNumOfPieces = 20;
     currentTickTime = initialTickTime;
     

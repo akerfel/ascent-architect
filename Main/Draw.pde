@@ -104,21 +104,7 @@ void drawHighScores() {
 }
 
 void drawPlayer() {
-    lerpAmount += lerpSpeed;
-
-    if (lerpAmount > 1) {
-        lerpAmount = 0;
-        color temp = startColor;
-        startColor = endColor;
-        endColor = temp;
-    }
-
-    color currentColor = lerpColor(startColor, endColor, lerpAmount);
-
-    fill(currentColor);
-
     stroke(0);
-    strokeWeight(1);
-
+    fill(251, 121, 56);
     rect(player.x, player.y - 1, player.w, player.h);
 }
