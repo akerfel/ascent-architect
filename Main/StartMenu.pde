@@ -22,7 +22,7 @@ class StartMenu {
         drawMuteIcon();
 
         // Display the instructions text below the buttons
-        textSize(18);
+        textSize(24);
         textAlign(CENTER, TOP);
         fill(255);
 
@@ -44,20 +44,20 @@ class StartMenu {
         }
 
         // Box dimensions with padding
-        float boxWidth = maxWidth + 20; // Padding on both sides
-        float boxHeight = instructions.length * 30 + 10; // Line height and padding
+        float boxWidth = maxWidth + 30; // Padding on both sides
+        float boxHeight = instructions.length * 35 + 12; // Line height and padding
 
         // Draw the box
         stroke(255);
         noFill();
         rectMode(CENTER);
-        rect(width / 2, instructionsY + boxHeight / 2, boxWidth, boxHeight);
+        rect(width / 2 + 1, instructionsY + boxHeight / 2, boxWidth, boxHeight);
         rectMode(CORNER);
 
         // Draw the instructions text
         fill(255);
         for (int i = 0; i < instructions.length; i++) {
-            float textY = instructionsY + i * 30 + 10; // Line height and padding
+            float textY = instructionsY + i * 35 + 10; // Line height and padding
             text(instructions[i], width / 2, textY);
         }
 
@@ -66,7 +66,7 @@ class StartMenu {
             float imgWidth = controlsTexture.width;
             float imgHeight = controlsTexture.height;
             imageMode(CENTER);
-            image(controlsTexture, width / 2, height - imgHeight * 0.7, imgWidth, imgHeight);
+            image(controlsTexture, width / 2, height - imgHeight * 0.65, imgWidth, imgHeight);
             imageMode(CORNER);
         }
     }

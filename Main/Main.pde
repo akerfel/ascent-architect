@@ -147,7 +147,7 @@ void initializeState() {
     
     // Lava dynamic variables
     lava_minimumTickTime = 1700;
-    lava_decreaseInTickTimePerLevel = 40;
+    lava_decreaseInTickTimePerLevel = 50;
     lava_millisUpdated = millis();
     lava_currentLevel = 3;
     
