@@ -16,7 +16,7 @@ int distancePiecesSpawnAbovePlayer;
 int numBlocksVisibleBelowPlayer;
 
 // Controls settings
-boolean movePieceNoDelay = true;
+boolean movePieceNoDelay = false;
 int delayMovePieceLeftOrRight;
 int delayMovePieceDown;
 
@@ -141,9 +141,9 @@ void initializeState() {
     currentTickTime = initialTickTime;
     
     // Lava difficulty
-    easy_lava_initialTickTime = 13000;
+    easy_lava_initialTickTime = 16000;
     medium_lava_initialTickTime = 7000;
-    hard_lava_initialTickTime = 2500;
+    hard_lava_initialTickTime = 1700;
     
     // Lava dynamic variables
     lava_minimumTickTime = 1700;
