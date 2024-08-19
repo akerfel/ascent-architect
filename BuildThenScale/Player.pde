@@ -25,18 +25,21 @@ public class Player {
     }  
     
     void update() {
-        //if (gameState == GameState.CLIMBING) {
-            if (isTouchingGoal()) {
-            }
-            if (xUpdate_and_checkIfWon()) {
-                goToNextLevel();
-                return;
-            }
-            if (yUpdate_and_checkIfWon()) {
-                goToNextLevel();
-                return;
-            }
-        //}
+        gameOverIfDiesByLava();
+        if (xUpdate_and_checkIfWon()) {
+            goToNextLevel();
+            return;
+        }
+        if (yUpdate_and_checkIfWon()) {
+            goToNextLevel();
+            return;
+        }
+    }
+    
+    void gameOverIfDiesByLava() {
+        if (getYinGrid() >= lava_getYinGrid() - 1) {
+            gameOver();    
+        }
     }
     
     boolean isTouchingGoal() {
@@ -105,7 +108,7 @@ public class Player {
         return int(y / pixelsPerBlock);
     }
     
-    Block getPlayerBlock() {
+    Block getBlockOfPlayersUpperLeftCorner() {
         return grid.grid[getXinGrid()][getYinGrid()];
     }
     

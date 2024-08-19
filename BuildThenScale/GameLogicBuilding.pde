@@ -30,8 +30,12 @@ void lava_updateCurrentTickTime() {
 void riseLavaLevel() {
     lava_currentLevel++;
     for (int x = 1; x < grid.w - 1; x++) {
-        grid.grid[x][grid.h - 1 - lava_currentLevel].setIsLava(true);
+        grid.grid[x][lava_getYinGrid()].setIsLava(true);
     }
+}
+
+int lava_getYinGrid() {
+    return grid.h - 1 - lava_currentLevel;
 }
 
 void movePieceFromInput() {

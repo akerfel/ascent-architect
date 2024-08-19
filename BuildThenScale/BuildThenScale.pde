@@ -88,7 +88,7 @@ void initializeState() {
     lava_initialLevelsBelowPlayer = 10;
     playerYstartPos = (gridHeight - lava_initialLevelsBelowPlayer) * pixelsPerBlock - pixelsPerBlock/8;
     distancePiecesSpawnAbovePlayer = 15;    
-    numBlocksVisibleBelowPlayer = 6;
+    numBlocksVisibleBelowPlayer = 9;
     
     // Controls settings
     delayMovePieceLeftOrRight = 80;
@@ -102,8 +102,8 @@ void initializeState() {
     currentTickTime = initialTickTime;
     
     // Lava
-    lava_initialTickTime = 2000;
-    lava_minimumTickTime = 1000;
+    lava_initialTickTime = 5000;
+    lava_minimumTickTime = 1400;
     lava_decreaseInTickTimePerLevel = 20;
     lava_currentTickTime = lava_initialTickTime;
     lava_millisUpdated = millis();
@@ -138,8 +138,6 @@ void initializeState() {
     heldPiece = null;
     canHoldPiece = false;
     gameState = GameState.GAMEACTIVE;
-    distancePiecesSpawnAbovePlayer = 15;    
-    numBlocksVisibleBelowPlayer = 6;
     
     // Moving piece with input
     movingPieceLeft = false;
