@@ -1,3 +1,9 @@
+void mousePressed() {
+    if (gameState == GameState.STARTSCREEN) {
+        startMenu.handleMousePressed();
+    }
+}
+
 void keyPressed() {
     switch(gameState) {
     case GAMEACTIVE:
@@ -29,10 +35,6 @@ void handleBuildingInput(int key) {
         currentPiece.tryToRotate();
     }
     
-    if (key == 'x') {
-        gameOver();    
-    }
-
     if (key == 'c') {
         // Make current piece fall until a new piece is spawned.
         while (!makePieceFallOrSpawnNewPiece());

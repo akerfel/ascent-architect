@@ -1,5 +1,5 @@
 public enum GameState {
     GAMEOVER,
-        STARTSCREEN,
-        GAMEACTIVE
+    STARTSCREEN,
+    GAMEACTIVE
 }

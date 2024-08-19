@@ -160,6 +160,8 @@ abstract public class Piece {
     
     private void checkIfPlayerCrushedByBlock(int gridX, int gridY) {
         if (gridX == player.getXinGrid() && gridY == player.getYinGrid()) {
+            crushed.play();
+            crushed.amp(0.4);
             gameOver();
         } 
     }
@@ -196,5 +198,278 @@ abstract public class Piece {
             }
         }
         return rightmostX;
+    }
+}
+
+public class Piece_I extends Piece {
+
+    public Piece_I() {
+        super();
+        xOffset = -1;
+        rgbColor = color(0, 255, 255);
+        setupAfterSubclassConstructor();
+    }
+
+    void setBlocksBasedOnRotation() {
+        switch (rotation) {
+        case 0:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(1, 0);
+            blocks[2] = new PVector(2, 0);
+            blocks[3] = new PVector(3, 0);
+            break;
+        case 1:
+            blocks[0] = new PVector(2, -1);
+            blocks[1] = new PVector(2, 0);
+            blocks[2] = new PVector(2, 1);
+            blocks[3] = new PVector(2, 2);
+            break;
+        case 2:
+            blocks[0] = new PVector(0, 1);
+            blocks[1] = new PVector(1, 1);
+            blocks[2] = new PVector(2, 1);
+            blocks[3] = new PVector(3, 1);
+            break;
+        case 3:
+            blocks[0] = new PVector(1, -1);
+            blocks[1] = new PVector(1, 0);
+            blocks[2] = new PVector(1, 1);
+            blocks[3] = new PVector(1, 2);
+            break;
+        }
+    }
+}
+
+public class Piece_J extends Piece {
+
+    public Piece_J() {
+        super();
+        xOffset = 0;
+        rgbColor = color(0, 0, 255);
+        setupAfterSubclassConstructor();
+    }
+
+    void setBlocksBasedOnRotation() {
+        switch (rotation) {
+        case 0:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(0, 1);
+            blocks[2] = new PVector(1, 1);
+            blocks[3] = new PVector(2, 1);
+            break;
+        case 1:
+            blocks[0] = new PVector(1, 0);
+            blocks[1] = new PVector(2, 0);
+            blocks[2] = new PVector(1, 1);
+            blocks[3] = new PVector(1, 2);
+            break;
+        case 2:
+            blocks[0] = new PVector(0, 1);
+            blocks[1] = new PVector(1, 1);
+            blocks[2] = new PVector(2, 1);
+            blocks[3] = new PVector(2, 2);
+            break;
+        case 3:
+            blocks[0] = new PVector(1, 0);
+            blocks[1] = new PVector(1, 1);
+            blocks[2] = new PVector(0, 2);
+            blocks[3] = new PVector(1, 2);
+            break;
+        }
+    }
+}
+
+public class Piece_L extends Piece {
+
+    public Piece_L() {
+        super();
+        xOffset = 2;
+        rgbColor = color(255, 127, 0);
+        setupAfterSubclassConstructor();
+    }
+
+    void setBlocksBasedOnRotation() {
+        switch (rotation) {
+        case 0:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(-2, 1);
+            blocks[2] = new PVector(-1, 1);
+            blocks[3] = new PVector(0, 1);
+            break;
+        case 1:
+            blocks[0] = new PVector(-1, 0);
+            blocks[1] = new PVector(-1, 1);
+            blocks[2] = new PVector(-1, 2);
+            blocks[3] = new PVector(0, 2);
+            break;
+        case 2:
+            blocks[0] = new PVector(-2, 1);
+            blocks[1] = new PVector(-1, 1);
+            blocks[2] = new PVector(0, 1);
+            blocks[3] = new PVector(-2, 2);
+            break;
+        case 3:
+            blocks[0] = new PVector(-2, 0);
+            blocks[1] = new PVector(-1, 0);
+            blocks[2] = new PVector(-1, 1);
+            blocks[3] = new PVector(-1, 2);
+            break;
+        }
+    }
+}
+
+public class Piece_O extends Piece {
+
+    public Piece_O() {
+        super();
+        xOffset = 0;
+        rgbColor = color(255, 255, 0);
+        setupAfterSubclassConstructor();
+    }
+
+    void setBlocksBasedOnRotation() {
+        switch (rotation) {
+        case 0:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(1, 0);
+            blocks[2] = new PVector(0, 1);
+            blocks[3] = new PVector(1, 1);
+            break;
+        case 1:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(1, 0);
+            blocks[2] = new PVector(0, 1);
+            blocks[3] = new PVector(1, 1);
+            break;
+        case 2:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(1, 0);
+            blocks[2] = new PVector(0, 1);
+            blocks[3] = new PVector(1, 1);
+            break;
+        case 3:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(1, 0);
+            blocks[2] = new PVector(0, 1);
+            blocks[3] = new PVector(1, 1);
+            break;
+        }
+    }
+}
+
+public class Piece_S extends Piece {
+
+    public Piece_S() {
+        super();
+        xOffset = 1;
+        rgbColor = color(0, 255, 0);
+        setupAfterSubclassConstructor();
+    }
+
+    void setBlocksBasedOnRotation() {
+        switch (rotation) {
+        case 0:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(1, 0);
+            blocks[2] = new PVector(-1, 1);
+            blocks[3] = new PVector(0, 1);
+            break;
+        case 1:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(0, 1);
+            blocks[2] = new PVector(1, 1);
+            blocks[3] = new PVector(1, 2);
+            break;
+        case 2:
+            blocks[0] = new PVector(0, 1);
+            blocks[1] = new PVector(1, 1);
+            blocks[2] = new PVector(-1, 2);
+            blocks[3] = new PVector(0, 2);
+            break;
+        case 3:
+            blocks[0] = new PVector(-1, 0);
+            blocks[1] = new PVector(-1, 1);
+            blocks[2] = new PVector(0, 1);
+            blocks[3] = new PVector(0, 2);
+            break;
+        }
+    }
+}
+
+public class Piece_T extends Piece {
+
+    public Piece_T() {
+        super();
+        xOffset = 1;
+        rgbColor = color(128, 0, 128);
+        setupAfterSubclassConstructor();
+    }
+
+    void setBlocksBasedOnRotation() {
+        switch (rotation) {
+        case 0:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(-1, 1);
+            blocks[2] = new PVector(0, 1);
+            blocks[3] = new PVector(1, 1);
+            break;
+        case 1:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(0, 1);
+            blocks[2] = new PVector(1, 1);
+            blocks[3] = new PVector(0, 2);
+            break;
+        case 2:
+            blocks[0] = new PVector(-1, 1);
+            blocks[1] = new PVector(0, 1);
+            blocks[2] = new PVector(1, 1);
+            blocks[3] = new PVector(0, 2);
+            break;
+        case 3:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(-1, 1);
+            blocks[2] = new PVector(0, 1);
+            blocks[3] = new PVector(0, 2);
+            break;
+        }
+    }
+}
+
+public class Piece_Z extends Piece {
+
+    public Piece_Z() {
+        super();
+        xOffset = 0;
+        rgbColor = color(255, 0, 0);
+        setupAfterSubclassConstructor();
+    }
+
+    void setBlocksBasedOnRotation() {
+        switch (rotation) {
+        case 0:
+            blocks[0] = new PVector(0, 0);
+            blocks[1] = new PVector(1, 0);
+            blocks[2] = new PVector(1, 1);
+            blocks[3] = new PVector(2, 1);
+            break;
+        case 1:
+            blocks[0] = new PVector(2, 0);
+            blocks[1] = new PVector(1, 1);
+            blocks[2] = new PVector(2, 1);
+            blocks[3] = new PVector(1, 2);
+            break;
+        case 2:
+            blocks[0] = new PVector(0, 1);
+            blocks[1] = new PVector(1, 1);
+            blocks[2] = new PVector(1, 2);
+            blocks[3] = new PVector(2, 2);
+            break;
+        case 3:
+            blocks[0] = new PVector(1, 0);
+            blocks[1] = new PVector(0, 1);
+            blocks[2] = new PVector(1, 1);
+            blocks[3] = new PVector(0, 2);
+            break;
+        }
     }
 }

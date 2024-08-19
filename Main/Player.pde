@@ -144,6 +144,8 @@ public class Player {
     
     void jump() {
         if (jumpSlots > 0) { 
+            //jump1.play();
+            //jump1.amp(0.2);
             vy = -jumpSpeed;  
             jumpSlots--;
         }  

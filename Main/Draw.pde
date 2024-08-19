@@ -36,7 +36,7 @@ void drawBlock(Block block, int x, int y) {
     int h = pixelsPerBlock;
     
     if (block.isFilled) {
-        image(stoneTexture, xpos, ypos, w, h);
+        image(activeBlockTexture, xpos, ypos, w, h);
     }
     else if (block.isGoal) {
         fill(block.rgbColor);

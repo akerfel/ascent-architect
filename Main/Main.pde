@@ -1,4 +1,5 @@
 import gifAnimation.*;
+import processing.sound.*;
 
 // Cheats
 boolean onlySpawnLongPieces;
@@ -67,17 +68,38 @@ int score;
 PrintWriter output;
 int piecesSpawned;
 
-// Textures
+// Start menu
+StartMenu startMenu;
+
+// Block Textures
 PImage stoneTexture;
+PImage facade00;
+PImage activeBlockTexture;
+
+// Lava texture
 PImage lavaTexture;
 PImage lavaTexture2;
 PImage background1;
 Gif lavaGif;
 Gif lavaGif2;
 
+// Sound
+SoundFile music1;
+SoundFile jump1;
+SoundFile crushed;
+
+
 // This function is called once, at startup.
 void setup() {
     size(600, 1000);
+    gameState = GameState.STARTSCREEN;
+    // Start menu
+    startMenu = new StartMenu();
+    if (music1 == null || !music1.isPlaying()) {
+        music1 = new SoundFile(this, "music1.mp3");
+        music1.loop();
+        music1.amp(0.1);
+    }
     initializeState();
 }
 
@@ -120,8 +142,12 @@ void initializeState() {
     gridBackgroundColor = color(135, 206, 235);
     goalColor = color(203, 209, 25);
     
-    // Texture
+    // Block Texture
     stoneTexture = loadImage("stone.png");
+    facade00 = loadImage("facade00.png");
+    activeBlockTexture = stoneTexture;
+    
+    // Lava textures
     lavaTexture = loadImage("lava.png");
     lavaTexture2 = loadImage("lava2.png");
     background1 = loadImage("background1.png");
@@ -129,6 +155,15 @@ void initializeState() {
     lavaGif.play();
     lavaGif2 = new Gif(this, "animatedLava2.gif");
     lavaGif2.play();
+    
+    // Sound
+    if (music1 == null || !music1.isPlaying()) {
+        music1 = new SoundFile(this, "music1.mp3");
+        music1.loop();
+        music1.amp(0.1);
+    }
+    jump1 = new SoundFile(this, "jump.wav");
+    crushed = new SoundFile(this, "crushed.mp3");
     
     // Dynamic CLIMBING variables
     player = new Player(0, 0);
@@ -149,7 +184,6 @@ void initializeState() {
     currentPiece.fillBlocks_and_checkIfGAMEOVER();
     heldPiece = null;
     canHoldPiece = false;
-    gameState = GameState.GAMEACTIVE;
     
     // Moving piece with input
     movingPieceLeft = false;
@@ -158,6 +192,7 @@ void initializeState() {
     millisMovedPieceRight = millis();
     millisMovedPieceLeft = millis();
     millisMovedPieceDown = millis();
+    
 }
 
 void gameOver() {
@@ -167,6 +202,7 @@ void gameOver() {
 
 void resetGame() {
     initializeState();
+    gameState = GameState.STARTSCREEN;
 }
 
 // This function is called ~60 times per second.
@@ -181,6 +217,7 @@ void draw() {
         drawGameOver();
         break;
     case STARTSCREEN:
+        startMenu.display();
         break;
     }
 }
