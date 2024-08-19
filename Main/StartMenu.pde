@@ -29,8 +29,9 @@ class StartMenu {
         float instructionsY = HardButton.y + HardButton.height / 2 + 45;
         String[] instructions = {
             "Build & Climb.",
-            "Don't crush the player.",
-            "Avoid lava."
+            "Don't crush the climber.",
+            "Avoid lava.",
+            "1 or 2 players."
         };
 
         // Calculate the maximum width of the instructions
@@ -65,7 +66,7 @@ class StartMenu {
             float imgWidth = controlsTexture.width;
             float imgHeight = controlsTexture.height;
             imageMode(CENTER);
-            image(controlsTexture, width / 2, height - imgHeight * 0.8, imgWidth, imgHeight);
+            image(controlsTexture, width / 2, height - imgHeight * 0.7, imgWidth, imgHeight);
             imageMode(CORNER);
         }
     }
