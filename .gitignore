@@ -1,3 +1,5 @@
 *.autosave
 BuildThenScale/windows-amd64
+Main/windows-amd64
+*/windows-amd64
 *highscores.txt
