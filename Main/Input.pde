@@ -2,6 +2,11 @@ void mousePressed() {
     if (gameState == GameState.STARTSCREEN) {
         startMenu.handleMousePressed();
     }
+    if (gameState == GameState.STARTSCREEN || gameState == GameState.GAMEOVER) {
+        if (mouseX >= 0 && mouseX <= pixelsPerBlock && mouseY >= 0 && mouseY <= pixelsPerBlock) {
+            muteMusic();    
+        }
+    }
 }
 
 void keyPressed() {

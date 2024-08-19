@@ -160,8 +160,10 @@ abstract public class Piece {
     
     private void checkIfPlayerCrushedByBlock(int gridX, int gridY) {
         if (gridX == player.getXinGrid() && gridY == player.getYinGrid()) {
-            crushed.play();
-            crushed.amp(0.4);
+            if (!soundIsMuted) {
+                crushed.play();
+                crushed.amp(0.4);
+            }
             gameOver();
         } 
     }

@@ -19,6 +19,7 @@ class StartMenu {
         playButton.display();
         settingsButton.display();
         quitButton.display();
+        drawMuteIcon();
     }
 
     void handleMousePressed() {

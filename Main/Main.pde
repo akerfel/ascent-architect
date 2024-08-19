@@ -83,8 +83,14 @@ PImage background1;
 Gif lavaGif;
 Gif lavaGif2;
 
+// Mute icons
+PImage muteTexture;
+PImage unmuteTexture;
+
 // Sound
+boolean soundIsMuted;
 SoundFile music1;
+float musicFactor;
 SoundFile jump1;
 SoundFile crushed;
 
@@ -95,13 +101,14 @@ void setup() {
     gameState = GameState.STARTSCREEN;
     // Start menu
     startMenu = new StartMenu();
-    if (music1 == null || !music1.isPlaying()) {
-        music1 = new SoundFile(this, "music1.mp3");
-        music1.loop();
-        music1.amp(0.1);
-    }
+    soundIsMuted = false;
+    musicFactor = 0.1;
     initializeState();
 }
+color startColor = color(251, 121, 56); // Base color
+color endColor = color(56, 121, 251);   // Alternate color for variety
+float lerpAmount = 0; // Interpolation amount
+float lerpSpeed = 0.01; // Speed of color transition
 
 void initializeState() {
     // Cheats
@@ -111,6 +118,7 @@ void initializeState() {
     gridWidth = 14;
     gridHeight = 1000;
     pixelsPerBlock = width/gridWidth + 1;
+    println(pixelsPerBlock);
     playerLength = pixelsPerBlock * 2/3;
     lava_initialLevelsBelowPlayer = 10;
     playerYstartPos = (gridHeight - lava_initialLevelsBelowPlayer + 1) * pixelsPerBlock - pixelsPerBlock/8;
@@ -156,12 +164,12 @@ void initializeState() {
     lavaGif2 = new Gif(this, "animatedLava2.gif");
     lavaGif2.play();
     
+    // Mute icons
+    muteTexture = loadImage("mute.png");
+    unmuteTexture = loadImage("unmute.png");
+    
     // Sound
-    if (music1 == null || !music1.isPlaying()) {
-        music1 = new SoundFile(this, "music1.mp3");
-        music1.loop();
-        music1.amp(0.1);
-    }
+    restartMusic();
     jump1 = new SoundFile(this, "jump.wav");
     crushed = new SoundFile(this, "crushed.mp3");
     
@@ -220,4 +228,22 @@ void draw() {
         startMenu.display();
         break;
     }
+}
+
+void restartMusic() {
+    if (music1 == null || !music1.isPlaying()) {
+        music1 = new SoundFile(this, "music1.mp3");
+        music1.loop();
+        music1.amp(musicFactor);
+    }
+}
+
+void muteMusic() {
+    if (soundIsMuted) {
+        restartMusic();
+    }
+    else {
+        music1.pause();
+    }
+    soundIsMuted = !soundIsMuted;
 }

@@ -12,6 +12,15 @@ void drawEverything() {
     drawScore();
 }
 
+void drawMuteIcon() {
+    if (soundIsMuted) {
+        image(muteTexture, 0, 0, pixelsPerBlock, pixelsPerBlock);
+    }
+    else {
+        image(unmuteTexture, 0, 0, pixelsPerBlock, pixelsPerBlock);
+    }
+}
+
 void drawScore() {
     fill(color(255, 255, 255));
     textSize(32);
@@ -73,10 +82,11 @@ void drawGameOver() {
     fill(0, 200, 0);
     text("Score: " + score, width/2, 100);
     fill(255, 255, 255);
-    text("Restart: Space", width/2, 150);
+    text("Menu: Space", width/2, 150);
     fill(255, 255, 255);
     text("Highscores:", width/2, 200);
     drawHighScores();
+    drawMuteIcon();
 }
 
 void drawHighScores() {
@@ -94,6 +104,21 @@ void drawHighScores() {
 }
 
 void drawPlayer() {
-    fill(251, 121, 56);
-    rect(player.x, player.y, player.w, player.h);
+    lerpAmount += lerpSpeed;
+
+    if (lerpAmount > 1) {
+        lerpAmount = 0;
+        color temp = startColor;
+        startColor = endColor;
+        endColor = temp;
+    }
+
+    color currentColor = lerpColor(startColor, endColor, lerpAmount);
+
+    fill(currentColor);
+
+    stroke(0);
+    strokeWeight(1);
+
+    rect(player.x, player.y - 1, player.w, player.h);
 }
