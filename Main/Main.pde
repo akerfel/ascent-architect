@@ -141,13 +141,13 @@ void initializeState() {
     currentTickTime = initialTickTime;
     
     // Lava difficulty
-    easy_lava_initialTickTime = 14000;
+    easy_lava_initialTickTime = 13000;
     medium_lava_initialTickTime = 7000;
     hard_lava_initialTickTime = 2500;
     
     // Lava dynamic variables
     lava_minimumTickTime = 1500;
-    lava_decreaseInTickTimePerLevel = 20;
+    lava_decreaseInTickTimePerLevel = 50;
     lava_millisUpdated = millis();
     lava_currentLevel = 3;
     
