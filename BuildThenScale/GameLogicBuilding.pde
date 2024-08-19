@@ -1,10 +1,36 @@
-void updateBuildingGameStateIfTimerReady() {
+void updateBuilding() {
+    updateFallingBlock();
+    updateLava();
+}
+
+void updateFallingBlock() {
     if (millis() > lastTimeCheck + currentTickTime || currentPieceIsOutOfSight()) {
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
     }
     if (movePieceNoDelay) {
         movePieceFromInput();
+    }
+}
+
+void updateLava() {
+    if (millis() > lava_millisUpdated + lava_currentTickTime) {
+        lava_millisUpdated = millis();
+        lava_updateCurrentTickTime();
+        riseLavaLevel();
+    }   
+}
+
+void lava_updateCurrentTickTime() {
+    int lava_possibleNewTickTime = lava_initialTickTime - lava_currentLevel * lava_decreaseInTickTimePerLevel;
+    lava_currentTickTime = max(lava_minimumTickTime, lava_possibleNewTickTime);  
+    println(millis() + ": lava_currentTickTimes: " + lava_currentTickTime);
+}
+
+void riseLavaLevel() {
+    lava_currentLevel++;
+    for (int x = 1; x < grid.w - 1; x++) {
+        grid.grid[x][grid.h - 1 - lava_currentLevel].setIsLava(true);
     }
 }
 
@@ -130,8 +156,8 @@ void decreaseTickTimeIfEnoughPiecesSpawned() {
     int timeLevel = int(piecesSpawned / levelIncrementPerNumOfPieces);
     int possibleNewTickTime = initialTickTime - timeLevel * decreaseInTickTimePerLevel;
     currentTickTime = max(minimumTickTime, possibleNewTickTime);
-    println("Pieces spawned: " + piecesSpawned);
-    println("Tick time: " + currentTickTime);
+    //println("Pieces spawned: " + piecesSpawned);
+    //println("Tick time: " + currentTickTime);
 }
 
 void fillBlockAndSetColor(int x, int y, color rgbColor) {

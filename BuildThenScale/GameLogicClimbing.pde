@@ -1,4 +1,4 @@
-void updateClimbingGameState() {
+void updateClimbing() {
     updateWallsAccordingToGrid();
     player.update();
     updateScore();
@@ -12,7 +12,7 @@ void updateScore() {
 }
 
 void updateWallsAccordingToGrid() {
-    walls = new ArrayList<>();
+    walls = new ArrayList<Wall>();
     for (int x = 0; x < grid.w; x++) {
         for (int y = 0; y < grid.h; y++) {
             Block block = grid.grid[x][y];

@@ -35,7 +35,11 @@ void drawBlock(Block block, int x, int y) {
     int w = pixelsPerBlock;
     int h = pixelsPerBlock;
     
-    if (block.isFilled) {
+    if (block.isLava) {
+        image(lavaTexture, xpos, ypos, w, h);
+        return;
+    }
+    else if (block.isFilled) {
         image(stoneTexture, xpos, ypos, w, h);
         return;
     }

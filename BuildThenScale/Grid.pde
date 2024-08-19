@@ -10,7 +10,7 @@ public class Grid {
     public void initializeBlocks() {
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
-                boolean isFilled = y == h - 1 || x == 0 || x == w - 1;
+                boolean isFilled = y > h - lava_initialLevelsBelowPlayer || x == 0 || x == w - 1;
                 grid[x][y] = new Block(isFilled);
             }
         }

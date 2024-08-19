@@ -23,6 +23,16 @@ int decreaseInTickTimePerLevel;
 int levelIncrementPerNumOfPieces;
 int currentTickTime; // changes
 
+// Lava
+int lava_initialTickTime;
+int lava_minimumTickTime;
+int lava_decreaseInTickTimePerLevel;
+int lava_levelIncrementPerNumOfPieces;
+int lava_currentTickTime; // changes
+int lava_millisUpdated;
+int lava_initialLevelsBelowPlayer;
+int lava_currentLevel;
+
 // Dynamic CLIMBING variables
 Player player;
 ArrayList<Wall> walls;
@@ -57,6 +67,7 @@ int piecesSpawned;
 
 // Textures
 PImage stoneTexture;
+PImage lavaTexture;
 
 // This function is called once, at startup.
 void setup() {
@@ -74,7 +85,8 @@ void initializeState() {
     pixelsPerBlock = 1000/80 * 3;
     playerLength = pixelsPerBlock * 2/3;
     playerXstartPos = pixelsPerBlock * 2;
-    playerYstartPos = (gridHeight - 1) * pixelsPerBlock - pixelsPerBlock/8;
+    lava_initialLevelsBelowPlayer = 10;
+    playerYstartPos = (gridHeight - lava_initialLevelsBelowPlayer) * pixelsPerBlock - pixelsPerBlock/8;
     distancePiecesSpawnAbovePlayer = 15;    
     numBlocksVisibleBelowPlayer = 6;
     
@@ -89,6 +101,14 @@ void initializeState() {
     levelIncrementPerNumOfPieces = 20;
     currentTickTime = initialTickTime;
     
+    // Lava
+    lava_initialTickTime = 2000;
+    lava_minimumTickTime = 1000;
+    lava_decreaseInTickTimePerLevel = 20;
+    lava_currentTickTime = lava_initialTickTime;
+    lava_millisUpdated = millis();
+    lava_currentLevel = -1;
+    
     // Colors
     backgroundColor = color(0);
     gridBackgroundColor = color(135, 206, 235);
@@ -96,6 +116,7 @@ void initializeState() {
     
     // Texture
     stoneTexture = loadImage("stone.png");
+    lavaTexture = loadImage("lava.png");
     
     // Dynamic CLIMBING variables
     player = new Player(0, 0);
@@ -142,8 +163,8 @@ void resetGame() {
 void draw() {
     switch(gameState) {
     case GAMEACTIVE:
-        updateBuildingGameStateIfTimerReady();
-        updateClimbingGameState();
+        updateBuilding();
+        updateClimbing();
         drawEverything();
         break;
     case GAMEOVER:
