@@ -16,7 +16,7 @@ int distancePiecesSpawnAbovePlayer;
 int numBlocksVisibleBelowPlayer;
 
 // Controls settings
-boolean movePieceNoDelay = false;
+boolean movePieceNoDelay = true;
 int delayMovePieceLeftOrRight;
 int delayMovePieceDown;
 
