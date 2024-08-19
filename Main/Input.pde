@@ -2,6 +2,9 @@ void mousePressed() {
     if (gameState == GameState.STARTSCREEN) {
         startMenu.handleMousePressed();
     }
+    else if (gameState == GameState.GAMEOVER) {
+        gameOverMenu.handleMousePressed();
+    }
     if (gameState == GameState.STARTSCREEN || gameState == GameState.GAMEOVER) {
         if (mouseX >= 0 && mouseX <= pixelsPerBlock && mouseY >= 0 && mouseY <= pixelsPerBlock) {
             muteMusic();    
@@ -14,9 +17,6 @@ void keyPressed() {
     case GAMEACTIVE:
         keysPressedGAMEACTIVE();
         break;
-    case GAMEOVER:
-        keysPressedGAMEOVER();
-        break;
     case STARTSCREEN:
         break;
     }
@@ -25,12 +25,6 @@ void keyPressed() {
 void keysPressedGAMEACTIVE() {
     handleBuildingInput(key);
     handleClimbingInput(key);
-}
-
-void keysPressedGAMEOVER() {
-    if (key == ENTER || key == ' ') {
-        resetGame();
-    }
 }
 
 void handleBuildingInput(int key) {

@@ -16,7 +16,7 @@ int distancePiecesSpawnAbovePlayer;
 int numBlocksVisibleBelowPlayer;
 
 // Controls settings
-boolean movePieceNoDelay = true;
+boolean movePieceNoDelay = false;
 int delayMovePieceLeftOrRight;
 int delayMovePieceDown;
 
@@ -73,8 +73,9 @@ int score;
 PrintWriter output;
 int piecesSpawned;
 
-// Start menu
+// Menus
 StartMenu startMenu;
+GameOverMenu gameOverMenu;
 
 // Block Textures
 PImage stoneTexture;
@@ -107,6 +108,7 @@ void setup() {
     gameState = GameState.STARTSCREEN;
     // Start menu
     startMenu = new StartMenu();
+    gameOverMenu = new GameOverMenu();
     soundIsMuted = false;
     musicFactor = 0.1;
     initializeState();
@@ -246,7 +248,7 @@ void draw() {
         drawEverything();
         break;
     case GAMEOVER:
-        drawGameOver();
+        gameOverMenu.display();
         break;
     case STARTSCREEN:
         startMenu.display();

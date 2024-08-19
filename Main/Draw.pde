@@ -4,9 +4,6 @@ void drawEverything() {
     translate(0, yTranslate);
     drawGrid();
     drawHeldPiece();
-    if (gameOver) {
-        drawGameOver();
-    }
     drawPlayer();
     translate(0, -yTranslate);
     drawScore();
@@ -82,9 +79,7 @@ void drawGameOver() {
     fill(0, 200, 0);
     text("Reached height: " + score, width/2, 100);
     fill(255, 255, 255);
-    text("Menu: Space", width/2, 150);
-    fill(255, 255, 255);
-    text("Highscores:", width/2, 200);
+    text("Highscores", width/2, 200);
     drawHighScores();
     drawMuteIcon();
 }
