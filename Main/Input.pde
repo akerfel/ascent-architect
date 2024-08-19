@@ -45,6 +45,10 @@ void handleBuildingInput(int key) {
     if (key == 'c') {
         holdCurrentPiece();
     }
+    
+    if (key == 'i') {
+        movePieceNoDelay = !movePieceNoDelay;    
+    }
 }
 
 void movePieceLeftRightOrDown() {
