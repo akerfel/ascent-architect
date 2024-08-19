@@ -173,7 +173,7 @@ void initializeState() {
     // Menu
     muteTexture = loadImage("mute.png");
     unmuteTexture = loadImage("unmute.png");
-    controlsTexture = loadImage("controls4.png");
+    controlsTexture = loadImage("controls7.png");
     
     // Sound
     restartMusic();
