@@ -24,7 +24,7 @@ void drawMuteIcon() {
 void drawScore() {
     fill(color(255, 255, 255));
     textSize(32);
-    text(score, width - 60, 60);
+    text(score, width - 60, 20);
 }
 
 void drawGrid() {
