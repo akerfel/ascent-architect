@@ -3,3 +3,9 @@ public enum GameState {
     STARTSCREEN,
     GAMEACTIVE
 }
+
+public enum Difficulty {
+    EASY,
+    MEDIUM,
+    HARD
+}

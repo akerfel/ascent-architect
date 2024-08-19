@@ -28,6 +28,10 @@ int levelIncrementPerNumOfPieces;
 int currentTickTime; // changes
 
 // Lava
+Difficulty difficulty = Difficulty.MEDIUM;
+int easy_lava_initialTickTime;
+int medium_lava_initialTickTime;
+int hard_lava_initialTickTime;
 int lava_initialTickTime;
 int lava_minimumTickTime;
 int lava_decreaseInTickTimePerLevel;
@@ -130,17 +134,20 @@ void initializeState() {
     delayMovePieceDown = 40;
     
     // Time per tick
-    initialTickTime = 200;
+    initialTickTime = 500;
     decreaseInTickTimePerLevel = 80;
     minimumTickTime = 200;
     levelIncrementPerNumOfPieces = 20;
     currentTickTime = initialTickTime;
     
-    // Lava
-    lava_initialTickTime = 6000;
-    lava_minimumTickTime = 1400;
+    // Lava difficulty
+    easy_lava_initialTickTime = 12000;
+    medium_lava_initialTickTime = 5000;
+    hard_lava_initialTickTime = 2500;
+    
+    // Lava dynamic variables
+    lava_minimumTickTime = 1000;
     lava_decreaseInTickTimePerLevel = 20;
-    lava_currentTickTime = lava_initialTickTime;
     lava_millisUpdated = millis();
     lava_currentLevel = 3;
     
@@ -201,6 +208,23 @@ void initializeState() {
     millisMovedPieceLeft = millis();
     millisMovedPieceDown = millis();
     
+}
+
+void setLavaTickTimeDependingOnDifficulty() {
+    switch(difficulty) {
+    case EASY:
+        lava_initialTickTime = easy_lava_initialTickTime;
+        lava_currentTickTime = lava_initialTickTime;
+        return;
+    case MEDIUM:
+        lava_initialTickTime = medium_lava_initialTickTime;
+        lava_currentTickTime = lava_initialTickTime;
+        return;
+    case HARD:
+        lava_initialTickTime = hard_lava_initialTickTime;
+        lava_currentTickTime = lava_initialTickTime;
+        return;
+    }
 }
 
 void gameOver() {

@@ -1,12 +1,12 @@
 class StartMenu {
-    Button playButton;
-    Button settingsButton;
-    Button quitButton;
+    Button EasyButton;
+    Button MediumButton;
+    Button HardButton;
 
     StartMenu() {
-        playButton = new Button("Play", width / 2, 300);
-        settingsButton = new Button("Settings", width / 2, 400);
-        quitButton = new Button("Quit", width / 2, 500);
+        EasyButton = new Button("Easy", width / 2, 300);
+        MediumButton = new Button("Medium", width / 2, 400);
+        HardButton = new Button("Hard", width / 2, 500);
     }
 
     void display() {
@@ -16,9 +16,9 @@ class StartMenu {
         textAlign(CENTER, CENTER);
         text(gameTitle, width / 2, 100);
 
-        playButton.display();
-        settingsButton.display();
-        quitButton.display();
+        EasyButton.display();
+        MediumButton.display();
+        HardButton.display();
         drawMuteIcon();
 
         // Display the instructions text below the buttons
@@ -26,7 +26,7 @@ class StartMenu {
         textAlign(CENTER, TOP);
         fill(255);
 
-        float instructionsY = quitButton.y + quitButton.height / 2 + 50; // Position text below the quit button
+        float instructionsY = HardButton.y + HardButton.height / 2 + 50; // Position text below the quit button
         String[] instructions = {
             "Build & Climb.",
             "Don't crush the player.",
@@ -71,12 +71,18 @@ class StartMenu {
     }
 
     void handleMousePressed() {
-        if (playButton.isClicked(mouseX, mouseY)) {
+        if (EasyButton.isClicked(mouseX, mouseY)) {
             gameState = GameState.GAMEACTIVE;
-        } else if (settingsButton.isClicked(mouseX, mouseY)) {
-            // Transition to settings screen (not implemented in this example)
-        } else if (quitButton.isClicked(mouseX, mouseY)) {
-            exit(); // Exit the program
+            difficulty = Difficulty.EASY;
+            setLavaTickTimeDependingOnDifficulty();
+        } else if (MediumButton.isClicked(mouseX, mouseY)) {
+            difficulty = Difficulty.MEDIUM;
+            gameState = GameState.GAMEACTIVE;
+            setLavaTickTimeDependingOnDifficulty();
+        } else if (HardButton.isClicked(mouseX, mouseY)) {
+            difficulty = Difficulty.HARD;
+            gameState = GameState.GAMEACTIVE;
+            setLavaTickTimeDependingOnDifficulty();
         }
     }
 }
