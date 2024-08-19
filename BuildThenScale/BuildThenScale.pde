@@ -108,7 +108,7 @@ void initializeState() {
     currentTickTime = initialTickTime;
     
     // Lava
-    lava_initialTickTime = 3000;
+    lava_initialTickTime = 6000;
     lava_minimumTickTime = 1400;
     lava_decreaseInTickTimePerLevel = 20;
     lava_currentTickTime = lava_initialTickTime;
