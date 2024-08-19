@@ -5,7 +5,7 @@ void updateClimbing() {
 }
 
 void updateScore() {
-    int currentHeight = gridHeight - player.getYinGrid() - 2;
+    int currentHeight = gridHeight - player.getYinGrid() - lava_initialLevelsBelowPlayer;
     if (currentHeight > score) {
         score = currentHeight;
     }

@@ -84,9 +84,9 @@ void initializeState() {
     gridHeight = 1000;
     pixelsPerBlock = 1000/80 * 3;
     playerLength = pixelsPerBlock * 2/3;
-    playerXstartPos = pixelsPerBlock * 2;
     lava_initialLevelsBelowPlayer = 10;
-    playerYstartPos = (gridHeight - lava_initialLevelsBelowPlayer) * pixelsPerBlock - pixelsPerBlock/8;
+    playerYstartPos = (gridHeight - lava_initialLevelsBelowPlayer + 1) * pixelsPerBlock - pixelsPerBlock/8;
+    playerXstartPos = pixelsPerBlock * 2;
     distancePiecesSpawnAbovePlayer = 15;    
     numBlocksVisibleBelowPlayer = 9;
     
