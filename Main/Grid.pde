@@ -12,7 +12,7 @@ public class Grid {
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
                 grid[x][y] = new Block(true);
-                if (y == h - 1) {
+                if (y >= h - 5) {
                     grid[x][y].setIsLava(true);   
                 }
             }
@@ -23,7 +23,11 @@ public class Grid {
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
                 boolean isFilled = y > h - lava_initialLevelsBelowPlayer || x == 0 || x == w - 1;
-                grid[x][y] = new Block(isFilled);
+                Block block = new Block(isFilled);
+                grid[x][y] = block;
+                if (y >= h - lava_currentLevel - 1) {
+                    block.setIsLava(true);
+                }
             }
         }
     }

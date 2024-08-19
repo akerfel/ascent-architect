@@ -5,6 +5,7 @@ import processing.sound.*;
 boolean onlySpawnLongPieces;
 
 // Settings
+String gameTitle;
 int pixelsPerBlock;
 int gridWidth;
 int gridHeight;
@@ -83,9 +84,10 @@ PImage background1;
 Gif lavaGif;
 Gif lavaGif2;
 
-// Mute icons
+// Menu
 PImage muteTexture;
 PImage unmuteTexture;
+PImage controlsTexture;
 
 // Sound
 boolean soundIsMuted;
@@ -115,6 +117,7 @@ void initializeState() {
     onlySpawnLongPieces = false;
 
     // Settings
+    gameTitle = "Ascent Architect";
     gridWidth = 14;
     gridHeight = 1000;
     pixelsPerBlock = width/gridWidth + 1;
@@ -143,7 +146,7 @@ void initializeState() {
     lava_decreaseInTickTimePerLevel = 20;
     lava_currentTickTime = lava_initialTickTime;
     lava_millisUpdated = millis();
-    lava_currentLevel = -1;
+    lava_currentLevel = 3;
     
     // Colors
     backgroundColor = color(0);
@@ -164,9 +167,10 @@ void initializeState() {
     lavaGif2 = new Gif(this, "animatedLava2.gif");
     lavaGif2.play();
     
-    // Mute icons
+    // Menu
     muteTexture = loadImage("mute.png");
     unmuteTexture = loadImage("unmute.png");
+    controlsTexture = loadImage("controls.png");
     
     // Sound
     restartMusic();
