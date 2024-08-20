@@ -69,9 +69,13 @@ class StartMenu {
         float imgWidth = controlsTexture.width;
         float imgHeight = controlsTexture.height;
         imageMode(CENTER);
-        image(controlsTexture, width / 2, height - imgHeight * 0.65, imgWidth, imgHeight);
+        image(controlsTexture, width / 2, height - imgHeight * 0.75, imgWidth, imgHeight);
         imageMode(CORNER);
     }
+    
+    textAlign(CORNER, TOP);
+    textSize(10);
+    text("Song: \"DROP TABLE BASS\" by Joe Reynolds/Professorlamp at opengameart.org, licensed under CC BY 3.0.", 4, height - 15);
 }
 
     void handleMousePressed() {

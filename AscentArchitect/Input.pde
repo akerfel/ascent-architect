@@ -34,16 +34,11 @@ void handleBuildingInput(int key) {
         currentPiece.tryToRotate();
     }
     
-    if (key == 'c') {
+    if (keyCode == SHIFT) {
         // Make current piece fall until a new piece is spawned.
         while (!makePieceFallOrSpawnNewPiece());
         lastTimeCheck = millis();
         makePieceFallOrSpawnNewPiece();
-    }
-    
-
-    if (key == 'c') {
-        holdCurrentPiece();
     }
     
     if (key == 'i') {
