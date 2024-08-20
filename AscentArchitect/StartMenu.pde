@@ -4,9 +4,9 @@ class StartMenu {
     Button HardButton;
 
     StartMenu() {
-        EasyButton = new Button("Easy", width / 2, 250);
-        MediumButton = new Button("Medium", width / 2, 350);
-        HardButton = new Button("Hard", width / 2, 450);
+        EasyButton = new Button("Easy", width / 2, 200);
+        MediumButton = new Button("Medium", width / 2, 300);
+        HardButton = new Button("Hard", width / 2, 400);
     }
 
     void display() {
@@ -14,7 +14,7 @@ class StartMenu {
     fill(255);
     textSize(55);
     textAlign(CENTER, CENTER);
-    text(gameTitle, width / 2, 125);
+    text(gameTitle, width / 2, 100);
 
     EasyButton.display();
     MediumButton.display();
@@ -25,13 +25,12 @@ class StartMenu {
     textAlign(CENTER, TOP);
     fill(255);
 
-    float instructionsY = HardButton.y + HardButton.height / 2 + 35;
+    float instructionsY = HardButton.y + HardButton.height / 2 + 45;
     String[] instructions = {
-        "Instructions",
-        "Climb as high as you can.",
+        "Instructions","Evade the rising lava by building and climbing.",
         "Don't crush the Climber.",
-        "1 Player: You control both roles.",
-        "2 Players: One controls the Builder, the other the Climber.",
+        "1-Player mode: You are both the Builder and the Climber.",
+        "2-Player mode: One is the Builder, the other the Climber.",
     };
 
     float maxWidth = 0;

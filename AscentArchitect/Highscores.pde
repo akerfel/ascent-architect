@@ -1,4 +1,5 @@
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 void createDataFolderIfDoesNotExist() {
   File dataFolder = new File(dataPath("data"));
@@ -15,30 +16,40 @@ void createDataFolderIfDoesNotExist() {
   }
 }
 
+String getCurrentHighscoreList() {
+    switch (difficulty) {
+        case EASY:
+            return highscoresFileEasy;
+        case MEDIUM:
+            return highscoresFileMedium;
+        case HARD:
+            return highscoresFileHard;
+        default:
+            return "";
+    }
+}
+
 void saveCurrentScore() {
-    createHighscoresFileIfMissing();                            // create high score file if missing
+    createFileIfMissing(getCurrentHighscoreList());
     ArrayList<Integer> highscores = getHighscores();            // load data/highscores.txt into arraylist
     highscores.add(score);                                      // add score to highscores arraylist
     Collections.sort(highscores, Collections.reverseOrder());   // sort highscores arraylist
-    saveHighscores(highscores);                                 // save top 10 scores in highscores arraylist
+    saveHighscores(highscores.stream().distinct().collect(Collectors.toCollection(ArrayList::new)));
 }
 
-// If highscores.txt does not exist, create it
-void createHighscoresFileIfMissing() {
-    File f = dataFile("highscores.txt");  // automatically has "data/" in front
+void createFileIfMissing(String file) {
+    File f = dataFile(file);  // automatically has "data/" in front
     boolean exists = f.isFile();
     if (!exists) {
-        // Create "highscores.txt"
-        output = createWriter("data/highscores.txt");
-        output.flush(); // Writes the remaining data to the file
-        output.close(); // Finishes the file
+        output = createWriter("data/" + file);
+        output.close();
     }
 }
 
 // Load highscores.txt into int arraylist that is returned
 ArrayList<Integer> getHighscores() {
     ArrayList<Integer> highscores = new ArrayList<Integer>();
-    BufferedReader reader = createReader("data/highscores.txt");
+    BufferedReader reader = createReader("data/" + getCurrentHighscoreList());
     String line = null;
     try {
         while ((line = reader.readLine()) != null) {
@@ -54,7 +65,7 @@ ArrayList<Integer> getHighscores() {
 
 // Save highscores from supplied arraylist into data/highscores.txt
 void saveHighscores(ArrayList<Integer> highscores) {
-    output = createWriter("data/highscores.txt");
+    output = createWriter("data/" + getCurrentHighscoreList());
     int i = 0;
     for (int someScore : highscores) {
         output.println(str(someScore));
@@ -63,6 +74,5 @@ void saveHighscores(ArrayList<Integer> highscores) {
             break;
         }
     }
-    output.flush(); // Writes the remaining data to the file
     output.close(); // Finishes the file
 }

@@ -79,7 +79,7 @@ void drawGameOver() {
     fill(0, 200, 0);
     text("Reached height: " + score, width/2, 100);
     fill(255, 255, 255);
-    text("Highscores", width/2, 200);
+    text("Highscores on " + difficulty, width/2, 200);
     drawHighScores();
     drawMuteIcon();
 }

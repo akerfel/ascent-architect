@@ -161,11 +161,11 @@ abstract public class Piece {
         Wall tempWall = new Wall(gridX * pixelsPerBlock, gridY * pixelsPerBlock);
         if (player.collidesWithThisWall(tempWall)) {
             drawEverything();
+            gameOver();
             if (!soundIsMuted) {
                 crushed.play();
                 crushed.amp(0.1);
             }
-            gameOver();
         } 
     }
 

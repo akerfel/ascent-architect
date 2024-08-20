@@ -72,6 +72,9 @@ color goalColor;
 int score;
 PrintWriter output;
 int piecesSpawned;
+String highscoresFileEasy;
+String highscoresFileMedium;
+String highscoresFileHard;
 
 // Menus
 StartMenu startMenu;
@@ -79,7 +82,6 @@ GameOverMenu gameOverMenu;
 
 // Block Textures
 PImage stoneTexture;
-PImage facade00;
 PImage activeBlockTexture;
 
 // Lava texture
@@ -143,9 +145,9 @@ void initializeState() {
     currentTickTime = initialTickTime;
     
     // Lava difficulty
-    easy_lava_initialTickTime = 14000;
-    medium_lava_initialTickTime = 7000;
-    hard_lava_initialTickTime = 1700;
+    easy_lava_initialTickTime = 15000;
+    medium_lava_initialTickTime = 5000;
+    hard_lava_initialTickTime = 2500;
     
     // Lava dynamic variables
     lava_minimumTickTime = 1700;
@@ -160,7 +162,6 @@ void initializeState() {
     
     // Block Texture
     stoneTexture = loadImage("stone.png");
-    facade00 = loadImage("facade00.png");
     activeBlockTexture = stoneTexture;
     
     // Lava textures
@@ -190,6 +191,9 @@ void initializeState() {
     score = 0;
     createDataFolderIfDoesNotExist();
     piecesSpawned = 1;
+    highscoresFileEasy = "highscores_easy.txt";
+    highscoresFileMedium = "highscores_medium.txt";
+    highscoresFileHard = "highscores_hard.txt";
     
     // Dynamic BUILDING variables
     currentLevelNum = 0;
