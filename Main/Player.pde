@@ -126,14 +126,18 @@ public class Player {
     
     boolean collidesWallNow() {
         for (Wall wall : walls) {
-            if (x < wall.x + wall.w &&
-               x + w > wall.x &&
-               y < wall.y + wall.h &&
-               y + h > wall.y) {
-                   return true;
+            if (collidesWithThisWall(wall)) {
+               return true;
             }
         }
         return false;
+    }
+    
+    boolean collidesWithThisWall(Wall wall) {
+        return x < wall.x + wall.w &&
+               x + w > wall.x &&
+               y < wall.y + wall.h &&
+               y + h > wall.y;
     }
     
     boolean isOnGround() {

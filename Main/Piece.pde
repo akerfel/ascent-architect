@@ -149,7 +149,6 @@ abstract public class Piece {
     void fillBlocks_and_checkIfGAMEOVER() {
         for (int i = 0; i < 4; i++) {
             PVector blockVec = blocks[i];
-            //fillBlockAndSetColor(x + int(blockVec.x), y + int(blockVec.y), rgbColor); // no need for colors when we have textures
             int gridX = x + int(blockVec.x);
             int gridY = y + int(blockVec.y);
             
@@ -159,10 +158,12 @@ abstract public class Piece {
     }
     
     private void checkIfPlayerCrushedByBlock(int gridX, int gridY) {
-        if (gridX == player.getXinGrid() && gridY == player.getYinGrid()) {
+        Wall tempWall = new Wall(gridX * pixelsPerBlock, gridY * pixelsPerBlock);
+        if (player.collidesWithThisWall(tempWall)) {
+            drawEverything();
             if (!soundIsMuted) {
                 crushed.play();
-                crushed.amp(0.4);
+                crushed.amp(0.1);
             }
             gameOver();
         } 
